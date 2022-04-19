@@ -1,0 +1,1220 @@
+successful set random seed as 1!
+Namespace(ablation_experiment='all', activation_dropout=0.0, activation_fn='relu', adam_betas='(0.9,0.98)', adam_eps=1e-08, adaptive_input=False, adaptive_softmax_cutoff=None, adaptive_softmax_dropout=0, alpha_bert=1.0, alpha_bert_max=1.0, alpha_bert_strategy='cosine', alpha_mode='learn', arch='transformers2', attention_dropout=0.0, bert_first=True, bert_gates=[1, 1, 1, 1, 1, 1], bert_model_name='/haotianshuv/caoyong/pretrained_model/bert-base-german-dbmdz-uncased/', bert_output_layer=-1, bert_ratio=0.65, bucket_cap_mb=25, clip_norm=25, cpu=False, criterion='label_smoothed_cross_entropy', curriculum=0, data='/haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/', dataset_impl='cached', dataset_path='', ddp_backend='c10d', decoder_attention_heads=8, decoder_embed_dim=512, decoder_embed_path=None, decoder_ffn_embed_dim=2048, decoder_input_dim=512, decoder_layers=4, decoder_learned_pos=False, decoder_no_bert=False, decoder_normalize_before=False, decoder_output_dim=512, device_id=0, disable_validation=False, distributed_backend='nccl', distributed_init_method=None, distributed_no_spawn=False, distributed_port=-1, distributed_rank=0, distributed_world_size=1, dropout=0.45, encoder_attention_heads=8, encoder_bert_dropout=False, encoder_bert_dropout_ratio=0.25, encoder_bert_mixup=False, encoder_embed_dim=512, encoder_embed_path=None, encoder_ffn_embed_dim=2048, encoder_layers=4, encoder_learned_pos=False, encoder_normalize_before=False, encoder_ratio=1.0, find_unused_parameters=False, finetune_bert=False, fix_batches_to_gpus=False, fp16=False, fp16_init_scale=128, fp16_scale_tolerance=0.0, fp16_scale_window=None, instruction_layer_num=0, keep_interval_updates=-1, keep_last_epochs=-1, label_smoothing=0.3, lazy_load=False, left_pad_source='True', left_pad_target='False', log_format=None, log_interval=1000, lr=[0.0003], lr_scheduler='inverse_sqrt', mask_cls_sep=False, max_epoch=100, max_sentences=None, max_sentences_valid=None, max_source_positions=1024, max_target_positions=1024, max_tokens=4000, max_update=150000, memory_efficient_fp16=False, min_loss_scale=0.0001, min_lr=1e-09, no_epoch_checkpoints=False, no_progress_bar=False, no_save=False, no_token_positional_embeddings=False, num_workers=0, optimizer='adam', optimizer_overrides='{}', raw_text=False, required_batch_size_multiple=8, reset_dataloader=False, reset_lr_scheduler=False, reset_meters=False, reset_optimizer=False, restore_file='checkpoint_last.pt', save_dir='checkpoints/tmp_gloss_de', save_interval=1, save_interval_updates=0, seed=1, sentence_avg=False, share_all_embeddings=True, share_decoder_input_output_embed=False, skip_invalid_size_inputs_valid_test=False, source_lang='gloss', target_lang='de', task='translation', tbmf_wrapper=False, tensorboard_logdir='', threshold_loss_scale=None, train_subset='train', update_freq=[1], upsample_primary=1, user_dir=None, valid_subset='valid', validate_interval=1, warmup_from_nmt=False, warmup_init_lr=1e-07, warmup_nmt_file='checkpoint_nmt.pt', warmup_updates=4000, weight_decay=0.0001)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ valid gloss-de 519 examples
+bert_gates [True, True, True, True, True, True]
+| model transformers2, criterion LabelSmoothedCrossEntropyCriterion
+| num. model params: 151698696 (num. trained: 41771016)
+| training on 1 GPUs
+| max tokens per GPU = 4000 and max sentences per GPU = None
+| no existing checkpoint found checkpoints/tmp_gloss_de/checkpoint_last.pt
+| loading train data for epoch 0
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ train gloss-de 13482 examples
+| NOTICE: your device may support faster training with --fp16
+/pytorch/torch/csrc/utils/python_arg_parser.cpp:756: UserWarning: This overload of add_ is deprecated:
+	add_(Number alpha, Tensor other)
+Consider using one of the following signatures instead:
+	add_(Tensor other, *, Number alpha)
+| epoch 001 | loss 12.027 | nll_loss 11.802 | ppl 3570.29 | wps 11903 | ups 5 | wpb 2360.121 | bsz 148.154 | num_updates 91 | lr 6.92272e-06 | gnorm 2.652 | clip 0.000 | oom 0.000 | wall 19 | train_wall 18
+| epoch 001 | valid on 'valid' subset | loss 10.994 | nll_loss 10.109 | ppl 1104.69 | num_updates 91
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint1.pt (epoch 1 @ 91 updates) (writing took 10.19526982307434 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint1.pt
+bert_gates [True, True, True, True, True, True]
+/pytorch/aten/src/ATen/native/BinaryOps.cpp:66: UserWarning: Integer division of tensors using div or / is deprecated, and in a future release div will perform true division as in Python 3. Use true_divide or floor_divide (// in Python) instead.
+| Translated 642 sentences (3425 tokens) in 0.6s (1038.32 sentences/s, 5539.32 tokens/s)
+| Generate test with beam=5: BLEU4 = 0.00, 23.1/0.0/0.0/0.0 (BP=0.130, ratio=0.329, syslen=2783, reflen=8458)
+[2022-04-07 09:40:01] INFO (nni/MainThread) Intermediate result: 0.0  (Index 0)
+test_score:  0.0
+| epoch 002 | loss 10.740 | nll_loss 9.919 | ppl 967.90 | wps 12105 | ups 3 | wpb 2360.121 | bsz 148.154 | num_updates 182 | lr 1.37454e-05 | gnorm 1.515 | clip 0.000 | oom 0.000 | wall 55 | train_wall 34
+| epoch 002 | valid on 'valid' subset | loss 10.136 | nll_loss 8.914 | ppl 482.44 | num_updates 182 | best_loss 10.1365
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint2.pt (epoch 2 @ 182 updates) (writing took 9.45547342300415 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint2.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (2234 tokens) in 0.4s (1450.48 sentences/s, 5047.30 tokens/s)
+| Generate test with beam=5: BLEU4 = 0.00, 41.6/0.0/0.0/0.0 (BP=0.013, ratio=0.188, syslen=1592, reflen=8458)
+[2022-04-07 09:40:35] INFO (nni/MainThread) Intermediate result: 0.0  (Index 1)
+test_score:  0.0
+| epoch 003 | loss 10.091 | nll_loss 8.967 | ppl 500.27 | wps 12152 | ups 3 | wpb 2360.121 | bsz 148.154 | num_updates 273 | lr 2.05682e-05 | gnorm 1.305 | clip 0.000 | oom 0.000 | wall 89 | train_wall 50
+| epoch 003 | valid on 'valid' subset | loss 9.568 | nll_loss 7.962 | ppl 249.30 | num_updates 273 | best_loss 9.56769
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint3.pt (epoch 3 @ 273 updates) (writing took 9.383910894393921 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint3.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (3962 tokens) in 0.9s (714.11 sentences/s, 4407.05 tokens/s)
+| Generate test with beam=5: BLEU4 = 0.00, 30.1/0.7/0.0/0.0 (BP=0.213, ratio=0.393, syslen=3320, reflen=8458)
+[2022-04-07 09:41:09] INFO (nni/MainThread) Intermediate result: 0.0  (Index 2)
+test_score:  0.0
+| epoch 004 | loss 9.603 | nll_loss 8.183 | ppl 290.58 | wps 11046 | ups 3 | wpb 2360.121 | bsz 148.154 | num_updates 364 | lr 2.73909e-05 | gnorm 1.169 | clip 0.000 | oom 0.000 | wall 125 | train_wall 68
+| epoch 004 | valid on 'valid' subset | loss 9.300 | nll_loss 7.390 | ppl 167.71 | num_updates 364 | best_loss 9.3
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint4.pt (epoch 4 @ 364 updates) (writing took 9.060989141464233 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint4.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (5943 tokens) in 1.1s (558.57 sentences/s, 5170.65 tokens/s)
+| Generate test with beam=5: BLEU4 = 0.00, 25.2/1.1/0.0/0.0 (BP=0.551, ratio=0.627, syslen=5301, reflen=8458)
+[2022-04-07 09:41:45] INFO (nni/MainThread) Intermediate result: 0.0  (Index 3)
+test_score:  0.0
+| epoch 005 | loss 9.312 | nll_loss 7.689 | ppl 206.35 | wps 11860 | ups 3 | wpb 2360.121 | bsz 148.154 | num_updates 455 | lr 3.42136e-05 | gnorm 1.272 | clip 0.000 | oom 0.000 | wall 160 | train_wall 85
+| epoch 005 | valid on 'valid' subset | loss 9.144 | nll_loss 7.039 | ppl 131.48 | num_updates 455 | best_loss 9.14359
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint5.pt (epoch 5 @ 455 updates) (writing took 9.33267092704773 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint5.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (5176 tokens) in 0.9s (676.03 sentences/s, 5450.36 tokens/s)
+| Generate test with beam=5: BLEU4 = 3.14, 36.5/8.4/3.6/2.8 (BP=0.421, ratio=0.536, syslen=4534, reflen=8458)
+[2022-04-07 09:42:22] INFO (nni/MainThread) Intermediate result: 3.14  (Index 4)
+test_score:  3.14
+| epoch 006 | loss 9.068 | nll_loss 7.295 | ppl 157.00 | wps 11942 | ups 2 | wpb 2360.121 | bsz 148.154 | num_updates 546 | lr 4.10364e-05 | gnorm 1.257 | clip 0.000 | oom 0.000 | wall 200 | train_wall 101
+| epoch 006 | valid on 'valid' subset | loss 8.776 | nll_loss 6.494 | ppl 90.15 | num_updates 546 | best_loss 8.77581
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint6.pt (epoch 6 @ 546 updates) (writing took 9.27025818824768 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint6.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (8631 tokens) in 4.0s (161.00 sentences/s, 2164.44 tokens/s)
+| Generate test with beam=5: BLEU4 = 4.95, 23.2/6.1/2.6/2.0 (BP=0.943, ratio=0.945, syslen=7989, reflen=8458)
+[2022-04-07 09:43:05] INFO (nni/MainThread) Intermediate result: 4.95  (Index 5)
+test_score:  4.95
+| epoch 007 | loss 8.801 | nll_loss 6.882 | ppl 117.93 | wps 11316 | ups 2 | wpb 2360.121 | bsz 148.154 | num_updates 637 | lr 4.78591e-05 | gnorm 1.308 | clip 0.000 | oom 0.000 | wall 243 | train_wall 119
+| epoch 007 | valid on 'valid' subset | loss 8.785 | nll_loss 6.286 | ppl 78.03 | num_updates 637 | best_loss 8.77581
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint7.pt (epoch 7 @ 637 updates) (writing took 6.587607383728027 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint7.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (5653 tokens) in 1.1s (602.03 sentences/s, 5301.09 tokens/s)
+| Generate test with beam=5: BLEU4 = 5.18, 39.8/11.8/5.4/4.4 (BP=0.503, ratio=0.592, syslen=5011, reflen=8458)
+[2022-04-07 09:43:41] INFO (nni/MainThread) Intermediate result: 5.18  (Index 6)
+test_score:  5.18
+| epoch 008 | loss 8.555 | nll_loss 6.501 | ppl 90.57 | wps 12104 | ups 3 | wpb 2360.121 | bsz 148.154 | num_updates 728 | lr 5.46818e-05 | gnorm 1.309 | clip 0.000 | oom 0.000 | wall 278 | train_wall 135
+| epoch 008 | valid on 'valid' subset | loss 8.337 | nll_loss 5.711 | ppl 52.37 | num_updates 728 | best_loss 8.33687
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint8.pt (epoch 8 @ 728 updates) (writing took 9.381120204925537 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint8.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (7704 tokens) in 2.8s (231.80 sentences/s, 2781.58 tokens/s)
+| Generate test with beam=5: BLEU4 = 7.14, 33.5/10.9/4.8/3.3 (BP=0.821, ratio=0.835, syslen=7062, reflen=8458)
+[2022-04-07 09:44:23] INFO (nni/MainThread) Intermediate result: 7.14  (Index 7)
+test_score:  7.14
+| epoch 009 | loss 8.329 | nll_loss 6.160 | ppl 71.48 | wps 12171 | ups 2 | wpb 2360.121 | bsz 148.154 | num_updates 819 | lr 6.15045e-05 | gnorm 1.296 | clip 0.000 | oom 0.000 | wall 320 | train_wall 151
+| epoch 009 | valid on 'valid' subset | loss 8.185 | nll_loss 5.436 | ppl 43.28 | num_updates 819 | best_loss 8.18537
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint9.pt (epoch 9 @ 819 updates) (writing took 9.624001264572144 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint9.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (10235 tokens) in 4.0s (160.67 sentences/s, 2561.44 tokens/s)
+| Generate test with beam=5: BLEU4 = 7.54, 28.8/9.7/4.3/2.7 (BP=1.000, ratio=1.134, syslen=9593, reflen=8458)
+[2022-04-07 09:45:04] INFO (nni/MainThread) Intermediate result: 7.54  (Index 8)
+test_score:  7.54
+| epoch 010 | loss 8.132 | nll_loss 5.860 | ppl 58.07 | wps 11440 | ups 2 | wpb 2360.121 | bsz 148.154 | num_updates 910 | lr 6.83273e-05 | gnorm 1.288 | clip 0.000 | oom 0.000 | wall 362 | train_wall 169
+| epoch 010 | valid on 'valid' subset | loss 8.066 | nll_loss 5.204 | ppl 36.86 | num_updates 910 | best_loss 8.06557
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint10.pt (epoch 10 @ 910 updates) (writing took 9.48409104347229 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint10.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (7191 tokens) in 2.3s (277.37 sentences/s, 3106.81 tokens/s)
+| Generate test with beam=5: BLEU4 = 9.96, 43.8/16.5/8.0/5.5 (BP=0.747, ratio=0.774, syslen=6549, reflen=8458)
+[2022-04-07 09:45:44] INFO (nni/MainThread) Intermediate result: 9.96  (Index 9)
+test_score:  9.96
+| epoch 011 | loss 7.965 | nll_loss 5.608 | ppl 48.76 | wps 12176 | ups 2 | wpb 2360.121 | bsz 148.154 | num_updates 1001 | lr 7.515e-05 | gnorm 1.318 | clip 0.000 | oom 0.000 | wall 401 | train_wall 185
+| epoch 011 | valid on 'valid' subset | loss 8.006 | nll_loss 5.014 | ppl 32.32 | num_updates 1001 | best_loss 8.00583
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint11.pt (epoch 11 @ 1001 updates) (writing took 9.123872518539429 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint11.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (6994 tokens) in 1.3s (492.76 sentences/s, 5368.12 tokens/s)
+| Generate test with beam=5: BLEU4 = 10.70, 46.0/18.1/9.3/6.3 (BP=0.718, ratio=0.751, syslen=6352, reflen=8458)
+[2022-04-07 09:46:23] INFO (nni/MainThread) Intermediate result: 10.7  (Index 10)
+test_score:  10.7
+| epoch 012 | loss 7.781 | nll_loss 5.327 | ppl 40.14 | wps 11941 | ups 2 | wpb 2360.121 | bsz 148.154 | num_updates 1092 | lr 8.19727e-05 | gnorm 1.238 | clip 0.000 | oom 0.000 | wall 440 | train_wall 202
+| epoch 012 | valid on 'valid' subset | loss 7.888 | nll_loss 4.855 | ppl 28.94 | num_updates 1092 | best_loss 7.88774
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint12.pt (epoch 12 @ 1092 updates) (writing took 9.800662517547607 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint12.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (8131 tokens) in 1.7s (382.92 sentences/s, 4849.68 tokens/s)
+| Generate test with beam=5: BLEU4 = 11.99, 42.2/17.0/8.4/5.7 (BP=0.879, ratio=0.885, syslen=7489, reflen=8458)
+[2022-04-07 09:47:01] INFO (nni/MainThread) Intermediate result: 11.99  (Index 11)
+test_score:  11.99
+| epoch 013 | loss 7.627 | nll_loss 5.089 | ppl 34.04 | wps 12050 | ups 2 | wpb 2360.121 | bsz 148.154 | num_updates 1183 | lr 8.87954e-05 | gnorm 1.248 | clip 0.000 | oom 0.000 | wall 479 | train_wall 218
+| epoch 013 | valid on 'valid' subset | loss 7.734 | nll_loss 4.592 | ppl 24.12 | num_updates 1183 | best_loss 7.7338
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint13.pt (epoch 13 @ 1183 updates) (writing took 9.870813369750977 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint13.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (8113 tokens) in 1.4s (450.00 sentences/s, 5686.72 tokens/s)
+| Generate test with beam=5: BLEU4 = 13.35, 44.8/19.0/9.7/6.5 (BP=0.876, ratio=0.883, syslen=7471, reflen=8458)
+[2022-04-07 09:47:40] INFO (nni/MainThread) Intermediate result: 13.35  (Index 12)
+test_score:  13.35
+| epoch 014 | loss 7.478 | nll_loss 4.865 | ppl 29.15 | wps 10843 | ups 2 | wpb 2360.121 | bsz 148.154 | num_updates 1274 | lr 9.56182e-05 | gnorm 1.200 | clip 0.000 | oom 0.000 | wall 519 | train_wall 236
+| epoch 014 | valid on 'valid' subset | loss 7.753 | nll_loss 4.524 | ppl 23.00 | num_updates 1274 | best_loss 7.7338
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint14.pt (epoch 14 @ 1274 updates) (writing took 6.064647912979126 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint14.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (6503 tokens) in 0.9s (713.40 sentences/s, 7226.26 tokens/s)
+| Generate test with beam=5: BLEU4 = 12.79, 53.4/24.1/13.0/9.4 (BP=0.642, ratio=0.693, syslen=5861, reflen=8458)
+[2022-04-07 09:48:16] INFO (nni/MainThread) Intermediate result: 12.79  (Index 13)
+test_score:  12.79
+| epoch 015 | loss 7.330 | nll_loss 4.638 | ppl 24.90 | wps 11776 | ups 3 | wpb 2360.121 | bsz 148.154 | num_updates 1365 | lr 0.000102441 | gnorm 1.170 | clip 0.000 | oom 0.000 | wall 551 | train_wall 253
+| epoch 015 | valid on 'valid' subset | loss 7.642 | nll_loss 4.389 | ppl 20.95 | num_updates 1365 | best_loss 7.64184
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint15.pt (epoch 15 @ 1365 updates) (writing took 9.113454580307007 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint15.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (6775 tokens) in 1.1s (566.27 sentences/s, 5975.83 tokens/s)
+| Generate test with beam=5: BLEU4 = 13.83, 52.6/25.0/13.5/9.3 (BP=0.684, ratio=0.725, syslen=6133, reflen=8458)
+[2022-04-07 09:48:52] INFO (nni/MainThread) Intermediate result: 13.83  (Index 14)
+test_score:  13.83
+| epoch 016 | loss 7.195 | nll_loss 4.434 | ppl 21.61 | wps 11959 | ups 2 | wpb 2360.121 | bsz 148.154 | num_updates 1456 | lr 0.000109264 | gnorm 1.177 | clip 0.000 | oom 0.000 | wall 589 | train_wall 270
+| epoch 016 | valid on 'valid' subset | loss 7.540 | nll_loss 4.202 | ppl 18.41 | num_updates 1456 | best_loss 7.54038
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint16.pt (epoch 16 @ 1456 updates) (writing took 9.549883604049683 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint16.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (7705 tokens) in 2.2s (291.67 sentences/s, 3500.53 tokens/s)
+| Generate test with beam=5: BLEU4 = 14.79, 49.0/22.7/12.1/7.9 (BP=0.821, ratio=0.835, syslen=7063, reflen=8458)
+[2022-04-07 09:49:31] INFO (nni/MainThread) Intermediate result: 14.79  (Index 15)
+test_score:  14.79
+| epoch 017 | loss 7.063 | nll_loss 4.231 | ppl 18.78 | wps 12177 | ups 2 | wpb 2360.121 | bsz 148.154 | num_updates 1547 | lr 0.000116086 | gnorm 1.126 | clip 0.000 | oom 0.000 | wall 628 | train_wall 286
+| epoch 017 | valid on 'valid' subset | loss 7.452 | nll_loss 4.077 | ppl 16.88 | num_updates 1547 | best_loss 7.45243
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint17.pt (epoch 17 @ 1547 updates) (writing took 9.144403219223022 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint17.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (7530 tokens) in 1.0s (613.64 sentences/s, 7197.34 tokens/s)
+| Generate test with beam=5: BLEU4 = 16.18, 52.1/25.1/14.0/9.3 (BP=0.796, ratio=0.814, syslen=6888, reflen=8458)
+[2022-04-07 09:50:09] INFO (nni/MainThread) Intermediate result: 16.18  (Index 16)
+test_score:  16.18
+| epoch 018 | loss 6.955 | nll_loss 4.063 | ppl 16.72 | wps 11663 | ups 2 | wpb 2360.121 | bsz 148.154 | num_updates 1638 | lr 0.000122909 | gnorm 1.195 | clip 0.000 | oom 0.000 | wall 667 | train_wall 303
+| epoch 018 | valid on 'valid' subset | loss 7.468 | nll_loss 4.057 | ppl 16.64 | num_updates 1638 | best_loss 7.45243
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint18.pt (epoch 18 @ 1638 updates) (writing took 6.054015636444092 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint18.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (7130 tokens) in 0.9s (689.32 sentences/s, 7655.50 tokens/s)
+| Generate test with beam=5: BLEU4 = 16.73, 55.0/27.5/15.9/11.0 (BP=0.738, ratio=0.767, syslen=6488, reflen=8458)
+[2022-04-07 09:50:44] INFO (nni/MainThread) Intermediate result: 16.73  (Index 17)
+test_score:  16.73
+| epoch 019 | loss 6.842 | nll_loss 3.891 | ppl 14.84 | wps 12097 | ups 3 | wpb 2360.121 | bsz 148.154 | num_updates 1729 | lr 0.000129732 | gnorm 1.154 | clip 0.000 | oom 0.000 | wall 701 | train_wall 319
+| epoch 019 | valid on 'valid' subset | loss 7.378 | nll_loss 3.922 | ppl 15.16 | num_updates 1729 | best_loss 7.37781
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint19.pt (epoch 19 @ 1729 updates) (writing took 9.013544797897339 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint19.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (7609 tokens) in 1.0s (632.98 sentences/s, 7502.05 tokens/s)
+| Generate test with beam=5: BLEU4 = 17.64, 53.1/26.9/15.5/10.3 (BP=0.807, ratio=0.824, syslen=6967, reflen=8458)
+[2022-04-07 09:51:21] INFO (nni/MainThread) Intermediate result: 17.64  (Index 18)
+test_score:  17.64
+| epoch 020 | loss 6.737 | nll_loss 3.732 | ppl 13.29 | wps 11988 | ups 2 | wpb 2360.121 | bsz 148.154 | num_updates 1820 | lr 0.000136555 | gnorm 1.137 | clip 0.000 | oom 0.000 | wall 739 | train_wall 336
+| epoch 020 | valid on 'valid' subset | loss 7.358 | nll_loss 3.905 | ppl 14.98 | num_updates 1820 | best_loss 7.35827
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint20.pt (epoch 20 @ 1820 updates) (writing took 9.090453863143921 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint20.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (7154 tokens) in 0.9s (676.15 sentences/s, 7534.53 tokens/s)
+| Generate test with beam=5: BLEU4 = 17.02, 55.7/27.7/16.2/11.1 (BP=0.742, ratio=0.770, syslen=6512, reflen=8458)
+[2022-04-07 09:52:00] INFO (nni/MainThread) Intermediate result: 17.02  (Index 19)
+test_score:  17.02
+| epoch 021 | loss 6.638 | nll_loss 3.579 | ppl 11.95 | wps 12046 | ups 3 | wpb 2360.121 | bsz 148.154 | num_updates 1911 | lr 0.000143377 | gnorm 1.098 | clip 0.000 | oom 0.000 | wall 774 | train_wall 352
+| epoch 021 | valid on 'valid' subset | loss 7.266 | nll_loss 3.815 | ppl 14.08 | num_updates 1911 | best_loss 7.26597
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint21.pt (epoch 21 @ 1911 updates) (writing took 9.33606743812561 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint21.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (7246 tokens) in 1.0s (629.63 sentences/s, 7106.34 tokens/s)
+| Generate test with beam=5: BLEU4 = 18.11, 55.5/28.7/17.2/12.0 (BP=0.755, ratio=0.781, syslen=6604, reflen=8458)
+[2022-04-07 09:52:36] INFO (nni/MainThread) Intermediate result: 18.11  (Index 20)
+test_score:  18.11
+| epoch 022 | loss 6.542 | nll_loss 3.434 | ppl 10.81 | wps 12544 | ups 2 | wpb 2360.121 | bsz 148.154 | num_updates 2002 | lr 0.0001502 | gnorm 1.055 | clip 0.000 | oom 0.000 | wall 812 | train_wall 368
+| epoch 022 | valid on 'valid' subset | loss 7.353 | nll_loss 3.851 | ppl 14.43 | num_updates 2002 | best_loss 7.26597
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint22.pt (epoch 22 @ 2002 updates) (writing took 6.088655710220337 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint22.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (6677 tokens) in 1.0s (640.07 sentences/s, 6656.91 tokens/s)
+| Generate test with beam=5: BLEU4 = 17.74, 59.0/31.1/19.2/14.0 (BP=0.669, ratio=0.714, syslen=6035, reflen=8458)
+[2022-04-07 09:53:10] INFO (nni/MainThread) Intermediate result: 17.74  (Index 21)
+test_score:  17.74
+| epoch 023 | loss 6.465 | nll_loss 3.315 | ppl 9.95 | wps 12198 | ups 3 | wpb 2360.121 | bsz 148.154 | num_updates 2093 | lr 0.000157023 | gnorm 1.090 | clip 0.000 | oom 0.000 | wall 844 | train_wall 384
+| epoch 023 | valid on 'valid' subset | loss 7.208 | nll_loss 3.657 | ppl 12.61 | num_updates 2093 | best_loss 7.20814
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint23.pt (epoch 23 @ 2093 updates) (writing took 8.875829458236694 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint23.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (7472 tokens) in 2.2s (294.71 sentences/s, 3430.00 tokens/s)
+| Generate test with beam=5: BLEU4 = 18.81, 55.1/28.3/17.3/12.1 (BP=0.788, ratio=0.808, syslen=6830, reflen=8458)
+[2022-04-07 09:53:45] INFO (nni/MainThread) Intermediate result: 18.81  (Index 22)
+test_score:  18.81
+| epoch 024 | loss 6.384 | nll_loss 3.192 | ppl 9.14 | wps 11907 | ups 2 | wpb 2360.121 | bsz 148.154 | num_updates 2184 | lr 0.000163845 | gnorm 1.041 | clip 0.000 | oom 0.000 | wall 883 | train_wall 401
+| epoch 024 | valid on 'valid' subset | loss 7.172 | nll_loss 3.623 | ppl 12.32 | num_updates 2184 | best_loss 7.17154
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint24.pt (epoch 24 @ 2184 updates) (writing took 9.24049687385559 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint24.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (7305 tokens) in 1.2s (530.71 sentences/s, 6038.69 tokens/s)
+| Generate test with beam=5: BLEU4 = 19.78, 56.4/29.9/19.1/13.9 (BP=0.764, ratio=0.788, syslen=6663, reflen=8458)
+[2022-04-07 09:54:23] INFO (nni/MainThread) Intermediate result: 19.78  (Index 23)
+test_score:  19.78
+| epoch 025 | loss 6.317 | nll_loss 3.091 | ppl 8.52 | wps 11791 | ups 2 | wpb 2360.121 | bsz 148.154 | num_updates 2275 | lr 0.000170668 | gnorm 1.032 | clip 0.000 | oom 0.000 | wall 921 | train_wall 418
+| epoch 025 | valid on 'valid' subset | loss 7.151 | nll_loss 3.557 | ppl 11.77 | num_updates 2275 | best_loss 7.15147
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint25.pt (epoch 25 @ 2275 updates) (writing took 9.602192163467407 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint25.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (8488 tokens) in 2.9s (223.73 sentences/s, 2957.94 tokens/s)
+| Generate test with beam=5: BLEU4 = 21.18, 51.4/26.9/16.9/11.8 (BP=0.925, ratio=0.928, syslen=7846, reflen=8458)
+[2022-04-07 09:55:05] INFO (nni/MainThread) Intermediate result: 21.18  (Index 24)
+test_score:  21.18
+| epoch 026 | loss 6.237 | nll_loss 2.972 | ppl 7.85 | wps 12200 | ups 2 | wpb 2360.121 | bsz 148.154 | num_updates 2366 | lr 0.000177491 | gnorm 0.963 | clip 0.000 | oom 0.000 | wall 962 | train_wall 434
+| epoch 026 | valid on 'valid' subset | loss 7.162 | nll_loss 3.618 | ppl 12.27 | num_updates 2366 | best_loss 7.15147
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint26.pt (epoch 26 @ 2366 updates) (writing took 6.593320846557617 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint26.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (6925 tokens) in 1.0s (612.62 sentences/s, 6608.12 tokens/s)
+| Generate test with beam=5: BLEU4 = 19.69, 59.7/32.0/20.7/15.2 (BP=0.707, ratio=0.743, syslen=6283, reflen=8458)
+[2022-04-07 09:55:40] INFO (nni/MainThread) Intermediate result: 19.69  (Index 25)
+test_score:  19.69
+| epoch 027 | loss 6.183 | nll_loss 2.889 | ppl 7.41 | wps 11940 | ups 3 | wpb 2360.121 | bsz 148.154 | num_updates 2457 | lr 0.000184314 | gnorm 0.965 | clip 0.000 | oom 0.000 | wall 994 | train_wall 451
+| epoch 027 | valid on 'valid' subset | loss 7.128 | nll_loss 3.564 | ppl 11.82 | num_updates 2457 | best_loss 7.12783
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint27.pt (epoch 27 @ 2457 updates) (writing took 9.045659065246582 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint27.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (6699 tokens) in 1.0s (664.38 sentences/s, 6932.54 tokens/s)
+| Generate test with beam=5: BLEU4 = 19.97, 60.7/33.6/22.5/16.9 (BP=0.673, ratio=0.716, syslen=6057, reflen=8458)
+[2022-04-07 09:56:15] INFO (nni/MainThread) Intermediate result: 19.97  (Index 26)
+test_score:  19.97
+| epoch 028 | loss 6.122 | nll_loss 2.800 | ppl 6.96 | wps 11447 | ups 2 | wpb 2360.121 | bsz 148.154 | num_updates 2548 | lr 0.000191136 | gnorm 0.939 | clip 0.000 | oom 0.000 | wall 1031 | train_wall 468
+| epoch 028 | valid on 'valid' subset | loss 7.103 | nll_loss 3.501 | ppl 11.32 | num_updates 2548 | best_loss 7.10287
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint28.pt (epoch 28 @ 2548 updates) (writing took 8.874567747116089 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint28.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (7165 tokens) in 1.0s (673.49 sentences/s, 7516.43 tokens/s)
+| Generate test with beam=5: BLEU4 = 21.17, 58.9/32.4/21.4/16.1 (BP=0.743, ratio=0.771, syslen=6523, reflen=8458)
+[2022-04-07 09:56:50] INFO (nni/MainThread) Intermediate result: 21.17  (Index 27)
+test_score:  21.17
+| epoch 029 | loss 6.066 | nll_loss 2.711 | ppl 6.55 | wps 11984 | ups 3 | wpb 2360.121 | bsz 148.154 | num_updates 2639 | lr 0.000197959 | gnorm 0.906 | clip 0.000 | oom 0.000 | wall 1065 | train_wall 485
+| epoch 029 | valid on 'valid' subset | loss 7.004 | nll_loss 3.450 | ppl 10.93 | num_updates 2639 | best_loss 7.0042
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint29.pt (epoch 29 @ 2639 updates) (writing took 9.638745784759521 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint29.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (7513 tokens) in 1.0s (632.00 sentences/s, 7395.98 tokens/s)
+| Generate test with beam=5: BLEU4 = 20.95, 56.4/30.4/19.7/14.4 (BP=0.794, ratio=0.812, syslen=6871, reflen=8458)
+[2022-04-07 09:57:26] INFO (nni/MainThread) Intermediate result: 20.95  (Index 28)
+test_score:  20.95
+| epoch 030 | loss 6.019 | nll_loss 2.645 | ppl 6.26 | wps 11997 | ups 3 | wpb 2360.121 | bsz 148.154 | num_updates 2730 | lr 0.000204782 | gnorm 0.884 | clip 0.000 | oom 0.000 | wall 1100 | train_wall 501
+| epoch 030 | valid on 'valid' subset | loss 7.007 | nll_loss 3.427 | ppl 10.75 | num_updates 2730 | best_loss 7.0042
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint30.pt (epoch 30 @ 2730 updates) (writing took 6.454663276672363 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint30.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (9682 tokens) in 1.2s (537.06 sentences/s, 8099.44 tokens/s)
+| Generate test with beam=5: BLEU4 = 21.13, 47.8/25.0/15.6/10.7 (BP=1.000, ratio=1.069, syslen=9040, reflen=8458)
+[2022-04-07 09:57:58] INFO (nni/MainThread) Intermediate result: 21.13  (Index 29)
+test_score:  21.13
+| epoch 031 | loss 5.964 | nll_loss 2.565 | ppl 5.92 | wps 12019 | ups 3 | wpb 2360.121 | bsz 148.154 | num_updates 2821 | lr 0.000211604 | gnorm 0.850 | clip 0.000 | oom 0.000 | wall 1132 | train_wall 518
+| epoch 031 | valid on 'valid' subset | loss 7.006 | nll_loss 3.380 | ppl 10.41 | num_updates 2821 | best_loss 7.0042
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint31.pt (epoch 31 @ 2821 updates) (writing took 6.01011323928833 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint31.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (7316 tokens) in 1.1s (569.77 sentences/s, 6492.86 tokens/s)
+| Generate test with beam=5: BLEU4 = 21.82, 58.8/32.5/21.4/16.1 (BP=0.765, ratio=0.789, syslen=6674, reflen=8458)
+[2022-04-07 09:58:30] INFO (nni/MainThread) Intermediate result: 21.82  (Index 30)
+test_score:  21.82
+| epoch 032 | loss 5.925 | nll_loss 2.507 | ppl 5.68 | wps 10820 | ups 2 | wpb 2360.121 | bsz 148.154 | num_updates 2912 | lr 0.000218427 | gnorm 0.878 | clip 0.000 | oom 0.000 | wall 1169 | train_wall 536
+| epoch 032 | valid on 'valid' subset | loss 6.931 | nll_loss 3.288 | ppl 9.77 | num_updates 2912 | best_loss 6.9309
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint32.pt (epoch 32 @ 2912 updates) (writing took 8.953221559524536 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint32.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (8523 tokens) in 1.2s (527.50 sentences/s, 7002.93 tokens/s)
+| Generate test with beam=5: BLEU4 = 23.53, 53.7/29.3/19.0/13.8 (BP=0.929, ratio=0.932, syslen=7881, reflen=8458)
+[2022-04-07 09:59:10] INFO (nni/MainThread) Intermediate result: 23.53  (Index 31)
+test_score:  23.53
+| epoch 033 | loss 5.878 | nll_loss 2.439 | ppl 5.42 | wps 12073 | ups 2 | wpb 2360.121 | bsz 148.154 | num_updates 3003 | lr 0.00022525 | gnorm 0.818 | clip 0.000 | oom 0.000 | wall 1207 | train_wall 552
+| epoch 033 | valid on 'valid' subset | loss 6.920 | nll_loss 3.277 | ppl 9.70 | num_updates 3003 | best_loss 6.9198
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint33.pt (epoch 33 @ 3003 updates) (writing took 9.556159734725952 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint33.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (8113 tokens) in 1.1s (589.15 sentences/s, 7445.10 tokens/s)
+| Generate test with beam=5: BLEU4 = 23.06, 55.1/30.3/19.9/14.5 (BP=0.876, ratio=0.883, syslen=7471, reflen=8458)
+[2022-04-07 09:59:48] INFO (nni/MainThread) Intermediate result: 23.06  (Index 32)
+test_score:  23.06
+| epoch 034 | loss 5.835 | nll_loss 2.376 | ppl 5.19 | wps 12141 | ups 3 | wpb 2360.121 | bsz 148.154 | num_updates 3094 | lr 0.000232073 | gnorm 0.804 | clip 0.000 | oom 0.000 | wall 1242 | train_wall 569
+| epoch 034 | valid on 'valid' subset | loss 6.906 | nll_loss 3.342 | ppl 10.14 | num_updates 3094 | best_loss 6.90583
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint34.pt (epoch 34 @ 3094 updates) (writing took 9.079220533370972 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint34.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (7789 tokens) in 1.0s (642.36 sentences/s, 7793.31 tokens/s)
+| Generate test with beam=5: BLEU4 = 22.95, 56.7/31.6/20.8/15.5 (BP=0.832, ratio=0.845, syslen=7147, reflen=8458)
+[2022-04-07 10:00:22] INFO (nni/MainThread) Intermediate result: 22.95  (Index 33)
+test_score:  22.95
+| epoch 035 | loss 5.793 | nll_loss 2.314 | ppl 4.97 | wps 12034 | ups 3 | wpb 2360.121 | bsz 148.154 | num_updates 3185 | lr 0.000238895 | gnorm 0.801 | clip 0.000 | oom 0.000 | wall 1276 | train_wall 585
+| epoch 035 | valid on 'valid' subset | loss 6.970 | nll_loss 3.363 | ppl 10.29 | num_updates 3185 | best_loss 6.90583
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint35.pt (epoch 35 @ 3185 updates) (writing took 6.258741617202759 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint35.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (7322 tokens) in 1.0s (631.02 sentences/s, 7196.78 tokens/s)
+| Generate test with beam=5: BLEU4 = 22.68, 59.3/33.8/22.6/16.9 (BP=0.766, ratio=0.790, syslen=6680, reflen=8458)
+[2022-04-07 10:00:55] INFO (nni/MainThread) Intermediate result: 22.68  (Index 34)
+test_score:  22.68
+| epoch 036 | loss 5.764 | nll_loss 2.272 | ppl 4.83 | wps 11946 | ups 3 | wpb 2360.121 | bsz 148.154 | num_updates 3276 | lr 0.000245718 | gnorm 0.786 | clip 0.000 | oom 0.000 | wall 1309 | train_wall 602
+| epoch 036 | valid on 'valid' subset | loss 6.891 | nll_loss 3.217 | ppl 9.30 | num_updates 3276 | best_loss 6.89101
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint36.pt (epoch 36 @ 3276 updates) (writing took 8.949530124664307 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint36.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (7518 tokens) in 1.1s (597.61 sentences/s, 6998.16 tokens/s)
+| Generate test with beam=5: BLEU4 = 22.96, 58.6/32.5/22.1/16.5 (BP=0.794, ratio=0.813, syslen=6876, reflen=8458)
+[2022-04-07 10:01:31] INFO (nni/MainThread) Intermediate result: 22.96  (Index 35)
+test_score:  22.96
+| epoch 037 | loss 5.727 | nll_loss 2.222 | ppl 4.67 | wps 12122 | ups 3 | wpb 2360.121 | bsz 148.154 | num_updates 3367 | lr 0.000252541 | gnorm 0.778 | clip 0.000 | oom 0.000 | wall 1344 | train_wall 618
+| epoch 037 | valid on 'valid' subset | loss 6.845 | nll_loss 3.245 | ppl 9.48 | num_updates 3367 | best_loss 6.84537
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint37.pt (epoch 37 @ 3367 updates) (writing took 8.971687316894531 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint37.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (7378 tokens) in 1.2s (552.23 sentences/s, 6346.31 tokens/s)
+| Generate test with beam=5: BLEU4 = 22.68, 59.1/33.2/22.3/16.8 (BP=0.774, ratio=0.796, syslen=6736, reflen=8458)
+[2022-04-07 10:02:06] INFO (nni/MainThread) Intermediate result: 22.68  (Index 36)
+test_score:  22.68
+| epoch 038 | loss 5.683 | nll_loss 2.157 | ppl 4.46 | wps 11806 | ups 3 | wpb 2360.121 | bsz 148.154 | num_updates 3458 | lr 0.000259364 | gnorm 0.726 | clip 0.000 | oom 0.000 | wall 1380 | train_wall 635
+| epoch 038 | valid on 'valid' subset | loss 6.822 | nll_loss 3.206 | ppl 9.23 | num_updates 3458 | best_loss 6.82193
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint38.pt (epoch 38 @ 3458 updates) (writing took 9.559978008270264 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint38.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (7471 tokens) in 1.1s (582.58 sentences/s, 6779.53 tokens/s)
+| Generate test with beam=5: BLEU4 = 22.62, 58.6/32.9/21.8/16.2 (BP=0.788, ratio=0.807, syslen=6829, reflen=8458)
+[2022-04-07 10:02:42] INFO (nni/MainThread) Intermediate result: 22.62  (Index 37)
+test_score:  22.62
+| epoch 039 | loss 5.662 | nll_loss 2.127 | ppl 4.37 | wps 11948 | ups 3 | wpb 2360.121 | bsz 148.154 | num_updates 3549 | lr 0.000266186 | gnorm 0.739 | clip 0.000 | oom 0.000 | wall 1416 | train_wall 652
+| epoch 039 | valid on 'valid' subset | loss 6.837 | nll_loss 3.195 | ppl 9.16 | num_updates 3549 | best_loss 6.82193
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint39.pt (epoch 39 @ 3549 updates) (writing took 7.055847406387329 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint39.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (7944 tokens) in 1.1s (602.54 sentences/s, 7455.70 tokens/s)
+| Generate test with beam=5: BLEU4 = 23.54, 56.6/31.6/21.0/15.4 (BP=0.854, ratio=0.863, syslen=7302, reflen=8458)
+[2022-04-07 10:03:15] INFO (nni/MainThread) Intermediate result: 23.54  (Index 38)
+test_score:  23.54
+| epoch 040 | loss 5.639 | nll_loss 2.094 | ppl 4.27 | wps 12066 | ups 2 | wpb 2360.121 | bsz 148.154 | num_updates 3640 | lr 0.000273009 | gnorm 0.745 | clip 0.000 | oom 0.000 | wall 1453 | train_wall 668
+| epoch 040 | valid on 'valid' subset | loss 6.837 | nll_loss 3.181 | ppl 9.07 | num_updates 3640 | best_loss 6.82193
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint40.pt (epoch 40 @ 3640 updates) (writing took 6.064075708389282 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint40.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (7580 tokens) in 1.2s (533.89 sentences/s, 6303.53 tokens/s)
+| Generate test with beam=5: BLEU4 = 23.94, 58.4/33.6/23.0/17.5 (BP=0.803, ratio=0.820, syslen=6938, reflen=8458)
+[2022-04-07 10:03:51] INFO (nni/MainThread) Intermediate result: 23.94  (Index 39)
+test_score:  23.94
+| epoch 041 | loss 5.596 | nll_loss 2.034 | ppl 4.09 | wps 12047 | ups 3 | wpb 2360.121 | bsz 148.154 | num_updates 3731 | lr 0.000279832 | gnorm 0.694 | clip 0.000 | oom 0.000 | wall 1489 | train_wall 685
+| epoch 041 | valid on 'valid' subset | loss 6.832 | nll_loss 3.237 | ppl 9.43 | num_updates 3731 | best_loss 6.82193
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint41.pt (epoch 41 @ 3731 updates) (writing took 6.135888338088989 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint41.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (7449 tokens) in 1.0s (661.63 sentences/s, 7676.75 tokens/s)
+| Generate test with beam=5: BLEU4 = 23.23, 58.8/33.5/22.7/17.2 (BP=0.785, ratio=0.805, syslen=6807, reflen=8458)
+[2022-04-07 10:04:27] INFO (nni/MainThread) Intermediate result: 23.23  (Index 40)
+test_score:  23.23
+| epoch 042 | loss 5.574 | nll_loss 2.001 | ppl 4.00 | wps 11968 | ups 3 | wpb 2360.121 | bsz 148.154 | num_updates 3822 | lr 0.000286654 | gnorm 0.702 | clip 0.000 | oom 0.000 | wall 1521 | train_wall 701
+| epoch 042 | valid on 'valid' subset | loss 6.796 | nll_loss 3.124 | ppl 8.72 | num_updates 3822 | best_loss 6.79605
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint42.pt (epoch 42 @ 3822 updates) (writing took 10.072357654571533 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint42.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (8437 tokens) in 1.1s (569.66 sentences/s, 7486.31 tokens/s)
+| Generate test with beam=5: BLEU4 = 24.24, 54.6/30.4/20.0/14.6 (BP=0.918, ratio=0.922, syslen=7795, reflen=8458)
+[2022-04-07 10:05:03] INFO (nni/MainThread) Intermediate result: 24.24  (Index 41)
+test_score:  24.24
+| epoch 043 | loss 5.563 | nll_loss 1.987 | ppl 3.96 | wps 12746 | ups 2 | wpb 2360.121 | bsz 148.154 | num_updates 3913 | lr 0.000293477 | gnorm 0.730 | clip 0.000 | oom 0.000 | wall 1559 | train_wall 717
+| epoch 043 | valid on 'valid' subset | loss 6.812 | nll_loss 3.155 | ppl 8.91 | num_updates 3913 | best_loss 6.79605
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint43.pt (epoch 43 @ 3913 updates) (writing took 6.156926155090332 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint43.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (7733 tokens) in 1.0s (620.50 sentences/s, 7474.06 tokens/s)
+| Generate test with beam=5: BLEU4 = 23.85, 58.0/33.0/22.2/16.5 (BP=0.825, ratio=0.838, syslen=7091, reflen=8458)
+[2022-04-07 10:05:37] INFO (nni/MainThread) Intermediate result: 23.85  (Index 42)
+test_score:  23.85
+| epoch 044 | loss 5.513 | nll_loss 1.915 | ppl 3.77 | wps 11992 | ups 3 | wpb 2360.121 | bsz 148.154 | num_updates 4004 | lr 0.00029985 | gnorm 0.654 | clip 0.000 | oom 0.000 | wall 1591 | train_wall 733
+| epoch 044 | valid on 'valid' subset | loss 6.804 | nll_loss 3.121 | ppl 8.70 | num_updates 4004 | best_loss 6.79605
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint44.pt (epoch 44 @ 4004 updates) (writing took 5.984415769577026 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint44.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (7706 tokens) in 1.2s (531.87 sentences/s, 6384.05 tokens/s)
+| Generate test with beam=5: BLEU4 = 23.63, 57.9/32.9/22.0/16.4 (BP=0.821, ratio=0.835, syslen=7064, reflen=8458)
+[2022-04-07 10:06:09] INFO (nni/MainThread) Intermediate result: 23.63  (Index 43)
+test_score:  23.63
+| epoch 045 | loss 5.488 | nll_loss 1.881 | ppl 3.68 | wps 12621 | ups 3 | wpb 2360.121 | bsz 148.154 | num_updates 4095 | lr 0.0002965 | gnorm 0.664 | clip 0.000 | oom 0.000 | wall 1622 | train_wall 749
+| epoch 045 | valid on 'valid' subset | loss 6.818 | nll_loss 3.207 | ppl 9.23 | num_updates 4095 | best_loss 6.79605
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint45.pt (epoch 45 @ 4095 updates) (writing took 5.956071853637695 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint45.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (7360 tokens) in 1.0s (633.93 sentences/s, 7267.53 tokens/s)
+| Generate test with beam=5: BLEU4 = 23.95, 60.4/35.1/24.0/18.2 (BP=0.772, ratio=0.794, syslen=6718, reflen=8458)
+[2022-04-07 10:06:39] INFO (nni/MainThread) Intermediate result: 23.95  (Index 44)
+test_score:  23.95
+| epoch 046 | loss 5.465 | nll_loss 1.847 | ppl 3.60 | wps 12093 | ups 3 | wpb 2360.121 | bsz 148.154 | num_updates 4186 | lr 0.000293259 | gnorm 0.657 | clip 0.000 | oom 0.000 | wall 1653 | train_wall 765
+| epoch 046 | valid on 'valid' subset | loss 6.788 | nll_loss 3.142 | ppl 8.83 | num_updates 4186 | best_loss 6.78771
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint46.pt (epoch 46 @ 4186 updates) (writing took 9.224205017089844 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint46.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (7876 tokens) in 1.0s (637.11 sentences/s, 7816.03 tokens/s)
+| Generate test with beam=5: BLEU4 = 24.60, 57.6/33.2/22.4/16.8 (BP=0.844, ratio=0.855, syslen=7234, reflen=8458)
+[2022-04-07 10:07:14] INFO (nni/MainThread) Intermediate result: 24.6  (Index 45)
+test_score:  24.6
+| epoch 047 | loss 5.447 | nll_loss 1.821 | ppl 3.53 | wps 12065 | ups 2 | wpb 2360.121 | bsz 148.154 | num_updates 4277 | lr 0.000290123 | gnorm 0.667 | clip 0.000 | oom 0.000 | wall 1691 | train_wall 782
+| epoch 047 | valid on 'valid' subset | loss 6.780 | nll_loss 3.116 | ppl 8.67 | num_updates 4277 | best_loss 6.77991
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint47.pt (epoch 47 @ 4277 updates) (writing took 9.28862452507019 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint47.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (8017 tokens) in 1.4s (475.49 sentences/s, 5937.66 tokens/s)
+| Generate test with beam=5: BLEU4 = 24.41, 56.8/32.1/21.6/16.2 (BP=0.863, ratio=0.872, syslen=7375, reflen=8458)
+[2022-04-07 10:07:52] INFO (nni/MainThread) Intermediate result: 24.41  (Index 46)
+test_score:  24.41
+| epoch 048 | loss 5.411 | nll_loss 1.768 | ppl 3.41 | wps 10916 | ups 2 | wpb 2360.121 | bsz 148.154 | num_updates 4368 | lr 0.000287085 | gnorm 0.638 | clip 0.000 | oom 0.000 | wall 1728 | train_wall 799
+| epoch 048 | valid on 'valid' subset | loss 6.744 | nll_loss 3.124 | ppl 8.72 | num_updates 4368 | best_loss 6.7437
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint48.pt (epoch 48 @ 4368 updates) (writing took 9.501899480819702 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint48.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (7611 tokens) in 1.1s (606.59 sentences/s, 7191.25 tokens/s)
+| Generate test with beam=5: BLEU4 = 24.25, 59.4/34.0/23.0/17.5 (BP=0.808, ratio=0.824, syslen=6969, reflen=8458)
+[2022-04-07 10:08:29] INFO (nni/MainThread) Intermediate result: 24.25  (Index 47)
+test_score:  24.25
+| epoch 049 | loss 5.389 | nll_loss 1.740 | ppl 3.34 | wps 11896 | ups 3 | wpb 2360.121 | bsz 148.154 | num_updates 4459 | lr 0.00028414 | gnorm 0.637 | clip 0.000 | oom 0.000 | wall 1763 | train_wall 816
+| epoch 049 | valid on 'valid' subset | loss 6.770 | nll_loss 3.069 | ppl 8.39 | num_updates 4459 | best_loss 6.7437
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint49.pt (epoch 49 @ 4459 updates) (writing took 6.3112006187438965 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint49.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (8184 tokens) in 1.1s (572.92 sentences/s, 7303.34 tokens/s)
+| Generate test with beam=5: BLEU4 = 24.60, 55.5/31.6/21.3/15.9 (BP=0.886, ratio=0.892, syslen=7542, reflen=8458)
+[2022-04-07 10:09:01] INFO (nni/MainThread) Intermediate result: 24.6  (Index 48)
+test_score:  24.6
+| epoch 050 | loss 5.355 | nll_loss 1.691 | ppl 3.23 | wps 11817 | ups 3 | wpb 2360.121 | bsz 148.154 | num_updates 4550 | lr 0.000281284 | gnorm 0.605 | clip 0.000 | oom 0.000 | wall 1795 | train_wall 833
+| epoch 050 | valid on 'valid' subset | loss 6.729 | nll_loss 3.075 | ppl 8.43 | num_updates 4550 | best_loss 6.72873
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint50.pt (epoch 50 @ 4550 updates) (writing took 9.132739543914795 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint50.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (8433 tokens) in 1.3s (508.22 sentences/s, 6675.67 tokens/s)
+| Generate test with beam=5: BLEU4 = 24.84, 55.2/30.9/20.6/15.3 (BP=0.918, ratio=0.921, syslen=7791, reflen=8458)
+[2022-04-07 10:09:37] INFO (nni/MainThread) Intermediate result: 24.84  (Index 49)
+test_score:  24.84
+| epoch 051 | loss 5.342 | nll_loss 1.674 | ppl 3.19 | wps 10926 | ups 2 | wpb 2360.121 | bsz 148.154 | num_updates 4641 | lr 0.000278513 | gnorm 0.629 | clip 0.000 | oom 0.000 | wall 1836 | train_wall 851
+| epoch 051 | valid on 'valid' subset | loss 6.768 | nll_loss 3.082 | ppl 8.47 | num_updates 4641 | best_loss 6.72873
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint51.pt (epoch 51 @ 4641 updates) (writing took 6.46467137336731 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint51.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (8090 tokens) in 1.3s (513.10 sentences/s, 6465.69 tokens/s)
+| Generate test with beam=5: BLEU4 = 24.31, 56.1/31.9/21.3/15.8 (BP=0.873, ratio=0.881, syslen=7448, reflen=8458)
+[2022-04-07 10:10:14] INFO (nni/MainThread) Intermediate result: 24.31  (Index 50)
+test_score:  24.31
+| epoch 052 | loss 5.312 | nll_loss 1.630 | ppl 3.09 | wps 12062 | ups 3 | wpb 2360.121 | bsz 148.154 | num_updates 4732 | lr 0.000275822 | gnorm 0.602 | clip 0.000 | oom 0.000 | wall 1868 | train_wall 867
+| epoch 052 | valid on 'valid' subset | loss 6.755 | nll_loss 3.091 | ppl 8.52 | num_updates 4732 | best_loss 6.72873
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint52.pt (epoch 52 @ 4732 updates) (writing took 6.034475803375244 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint52.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (8018 tokens) in 1.1s (608.88 sentences/s, 7604.30 tokens/s)
+| Generate test with beam=5: BLEU4 = 24.30, 56.4/32.2/21.5/16.0 (BP=0.864, ratio=0.872, syslen=7376, reflen=8458)
+[2022-04-07 10:10:45] INFO (nni/MainThread) Intermediate result: 24.3  (Index 51)
+test_score:  24.3
+| epoch 053 | loss 5.291 | nll_loss 1.599 | ppl 3.03 | wps 12124 | ups 3 | wpb 2360.121 | bsz 148.154 | num_updates 4823 | lr 0.000273208 | gnorm 0.603 | clip 0.000 | oom 0.000 | wall 1899 | train_wall 883
+| epoch 053 | valid on 'valid' subset | loss 6.771 | nll_loss 3.126 | ppl 8.73 | num_updates 4823 | best_loss 6.72873
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint53.pt (epoch 53 @ 4823 updates) (writing took 5.959346294403076 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint53.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (7663 tokens) in 1.1s (605.13 sentences/s, 7222.87 tokens/s)
+| Generate test with beam=5: BLEU4 = 24.05, 58.3/33.6/22.6/17.1 (BP=0.815, ratio=0.830, syslen=7021, reflen=8458)
+[2022-04-07 10:11:16] INFO (nni/MainThread) Intermediate result: 24.05  (Index 52)
+test_score:  24.05
+| epoch 054 | loss 5.270 | nll_loss 1.569 | ppl 2.97 | wps 12042 | ups 3 | wpb 2360.121 | bsz 148.154 | num_updates 4914 | lr 0.000270666 | gnorm 0.595 | clip 0.000 | oom 0.000 | wall 1930 | train_wall 900
+| epoch 054 | valid on 'valid' subset | loss 6.766 | nll_loss 3.185 | ppl 9.09 | num_updates 4914 | best_loss 6.72873
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint54.pt (epoch 54 @ 4914 updates) (writing took 6.044617414474487 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint54.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (7693 tokens) in 1.0s (615.05 sentences/s, 7370.01 tokens/s)
+| Generate test with beam=5: BLEU4 = 23.71, 58.9/33.3/22.0/16.3 (BP=0.819, ratio=0.834, syslen=7051, reflen=8458)
+[2022-04-07 10:11:47] INFO (nni/MainThread) Intermediate result: 23.71  (Index 53)
+test_score:  23.71
+| epoch 055 | loss 5.255 | nll_loss 1.549 | ppl 2.93 | wps 11999 | ups 3 | wpb 2360.121 | bsz 148.154 | num_updates 5005 | lr 0.000268194 | gnorm 0.601 | clip 0.000 | oom 0.000 | wall 1961 | train_wall 916
+| epoch 055 | valid on 'valid' subset | loss 6.787 | nll_loss 3.126 | ppl 8.73 | num_updates 5005 | best_loss 6.72873
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint55.pt (epoch 55 @ 5005 updates) (writing took 5.922131776809692 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint55.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (8193 tokens) in 1.2s (544.09 sentences/s, 6943.52 tokens/s)
+| Generate test with beam=5: BLEU4 = 24.17, 55.8/31.5/20.7/15.1 (BP=0.887, ratio=0.893, syslen=7551, reflen=8458)
+[2022-04-07 10:12:18] INFO (nni/MainThread) Intermediate result: 24.17  (Index 54)
+test_score:  24.17
+| epoch 056 | loss 5.233 | nll_loss 1.516 | ppl 2.86 | wps 12152 | ups 3 | wpb 2360.121 | bsz 148.154 | num_updates 5096 | lr 0.000265789 | gnorm 0.596 | clip 0.000 | oom 0.000 | wall 1992 | train_wall 933
+| epoch 056 | valid on 'valid' subset | loss 6.784 | nll_loss 3.186 | ppl 9.10 | num_updates 5096 | best_loss 6.72873
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint56.pt (epoch 56 @ 5096 updates) (writing took 6.122304677963257 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint56.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (7773 tokens) in 1.1s (566.00 sentences/s, 6852.77 tokens/s)
+| Generate test with beam=5: BLEU4 = 23.82, 57.6/32.6/21.8/16.5 (BP=0.830, ratio=0.843, syslen=7131, reflen=8458)
+[2022-04-07 10:12:50] INFO (nni/MainThread) Intermediate result: 23.82  (Index 55)
+test_score:  23.82
+| epoch 057 | loss 5.221 | nll_loss 1.503 | ppl 2.83 | wps 10987 | ups 3 | wpb 2360.121 | bsz 148.154 | num_updates 5187 | lr 0.000263447 | gnorm 0.592 | clip 0.000 | oom 0.000 | wall 2026 | train_wall 950
+| epoch 057 | valid on 'valid' subset | loss 6.783 | nll_loss 3.134 | ppl 8.78 | num_updates 5187 | best_loss 6.72873
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint57.pt (epoch 57 @ 5187 updates) (writing took 6.104307413101196 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint57.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (7997 tokens) in 1.2s (541.77 sentences/s, 6748.52 tokens/s)
+| Generate test with beam=5: BLEU4 = 24.79, 57.0/32.6/22.1/16.7 (BP=0.861, ratio=0.870, syslen=7355, reflen=8458)
+[2022-04-07 10:13:24] INFO (nni/MainThread) Intermediate result: 24.79  (Index 56)
+test_score:  24.79
+| epoch 058 | loss 5.196 | nll_loss 1.464 | ppl 2.76 | wps 10830 | ups 3 | wpb 2360.121 | bsz 148.154 | num_updates 5278 | lr 0.000261166 | gnorm 0.581 | clip 0.000 | oom 0.000 | wall 2060 | train_wall 968
+| epoch 058 | valid on 'valid' subset | loss 6.795 | nll_loss 3.172 | ppl 9.01 | num_updates 5278 | best_loss 6.72873
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint58.pt (epoch 58 @ 5278 updates) (writing took 6.388262987136841 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint58.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (8251 tokens) in 1.1s (585.47 sentences/s, 7524.44 tokens/s)
+| Generate test with beam=5: BLEU4 = 24.58, 56.0/31.7/20.9/15.4 (BP=0.894, ratio=0.900, syslen=7609, reflen=8458)
+[2022-04-07 10:13:57] INFO (nni/MainThread) Intermediate result: 24.58  (Index 57)
+test_score:  24.58
+| epoch 059 | loss 5.175 | nll_loss 1.435 | ppl 2.70 | wps 11913 | ups 3 | wpb 2360.121 | bsz 148.154 | num_updates 5369 | lr 0.000258943 | gnorm 0.562 | clip 0.000 | oom 0.000 | wall 2091 | train_wall 985
+| epoch 059 | valid on 'valid' subset | loss 6.787 | nll_loss 3.199 | ppl 9.18 | num_updates 5369 | best_loss 6.72873
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint59.pt (epoch 59 @ 5369 updates) (writing took 6.481659889221191 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint59.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (8030 tokens) in 1.2s (540.76 sentences/s, 6763.77 tokens/s)
+| Generate test with beam=5: BLEU4 = 24.64, 56.9/32.3/21.8/16.5 (BP=0.865, ratio=0.873, syslen=7388, reflen=8458)
+[2022-04-07 10:14:30] INFO (nni/MainThread) Intermediate result: 24.64  (Index 58)
+test_score:  24.64
+| epoch 060 | loss 5.160 | nll_loss 1.416 | ppl 2.67 | wps 11992 | ups 3 | wpb 2360.121 | bsz 148.154 | num_updates 5460 | lr 0.000256776 | gnorm 0.571 | clip 0.000 | oom 0.000 | wall 2124 | train_wall 1001
+| epoch 060 | valid on 'valid' subset | loss 6.806 | nll_loss 3.164 | ppl 8.96 | num_updates 5460 | best_loss 6.72873
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint60.pt (epoch 60 @ 5460 updates) (writing took 6.690069675445557 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint60.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (8528 tokens) in 1.2s (554.17 sentences/s, 7361.31 tokens/s)
+| Generate test with beam=5: BLEU4 = 25.38, 55.0/30.9/20.8/15.7 (BP=0.930, ratio=0.932, syslen=7886, reflen=8458)
+[2022-04-07 10:15:02] INFO (nni/MainThread) Intermediate result: 25.38  (Index 59)
+test_score:  25.38
+| epoch 061 | loss 5.145 | nll_loss 1.390 | ppl 2.62 | wps 12167 | ups 3 | wpb 2360.121 | bsz 148.154 | num_updates 5551 | lr 0.000254663 | gnorm 0.570 | clip 0.000 | oom 0.000 | wall 2159 | train_wall 1017
+| epoch 061 | valid on 'valid' subset | loss 6.817 | nll_loss 3.200 | ppl 9.19 | num_updates 5551 | best_loss 6.72873
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint61.pt (epoch 61 @ 5551 updates) (writing took 6.294753313064575 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint61.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (7828 tokens) in 1.0s (625.37 sentences/s, 7625.21 tokens/s)
+| Generate test with beam=5: BLEU4 = 24.09, 57.2/32.6/22.1/16.6 (BP=0.838, ratio=0.850, syslen=7186, reflen=8458)
+[2022-04-07 10:15:36] INFO (nni/MainThread) Intermediate result: 24.09  (Index 60)
+test_score:  24.09
+| epoch 062 | loss 5.133 | nll_loss 1.374 | ppl 2.59 | wps 11879 | ups 3 | wpb 2360.121 | bsz 148.154 | num_updates 5642 | lr 0.000252601 | gnorm 0.580 | clip 0.000 | oom 0.000 | wall 2191 | train_wall 1034
+| epoch 062 | valid on 'valid' subset | loss 6.820 | nll_loss 3.208 | ppl 9.24 | num_updates 5642 | best_loss 6.72873
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint62.pt (epoch 62 @ 5642 updates) (writing took 5.751240253448486 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint62.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (8064 tokens) in 1.1s (577.51 sentences/s, 7253.97 tokens/s)
+| Generate test with beam=5: BLEU4 = 24.48, 56.4/32.0/21.5/16.2 (BP=0.870, ratio=0.878, syslen=7422, reflen=8458)
+[2022-04-07 10:16:09] INFO (nni/MainThread) Intermediate result: 24.48  (Index 61)
+test_score:  24.48
+| epoch 063 | loss 5.113 | nll_loss 1.344 | ppl 2.54 | wps 12038 | ups 3 | wpb 2360.121 | bsz 148.154 | num_updates 5733 | lr 0.000250588 | gnorm 0.566 | clip 0.000 | oom 0.000 | wall 2223 | train_wall 1051
+| epoch 063 | valid on 'valid' subset | loss 6.786 | nll_loss 3.211 | ppl 9.26 | num_updates 5733 | best_loss 6.72873
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint63.pt (epoch 63 @ 5733 updates) (writing took 6.569716453552246 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint63.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (8078 tokens) in 1.1s (606.26 sentences/s, 7628.28 tokens/s)
+| Generate test with beam=5: BLEU4 = 24.79, 56.7/32.4/21.8/16.4 (BP=0.872, ratio=0.879, syslen=7436, reflen=8458)
+[2022-04-07 10:16:41] INFO (nni/MainThread) Intermediate result: 24.79  (Index 62)
+test_score:  24.79
+| epoch 064 | loss 5.109 | nll_loss 1.341 | ppl 2.53 | wps 12094 | ups 3 | wpb 2360.121 | bsz 148.154 | num_updates 5824 | lr 0.000248623 | gnorm 0.582 | clip 0.000 | oom 0.000 | wall 2255 | train_wall 1067
+| epoch 064 | valid on 'valid' subset | loss 6.816 | nll_loss 3.224 | ppl 9.34 | num_updates 5824 | best_loss 6.72873
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint64.pt (epoch 64 @ 5824 updates) (writing took 6.005834341049194 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint64.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (8054 tokens) in 1.1s (589.56 sentences/s, 7396.17 tokens/s)
+| Generate test with beam=5: BLEU4 = 24.81, 56.9/32.7/22.0/16.3 (BP=0.868, ratio=0.876, syslen=7412, reflen=8458)
+[2022-04-07 10:17:12] INFO (nni/MainThread) Intermediate result: 24.81  (Index 63)
+test_score:  24.81
+| epoch 065 | loss 5.085 | nll_loss 1.307 | ppl 2.47 | wps 11310 | ups 3 | wpb 2360.121 | bsz 148.154 | num_updates 5915 | lr 0.000246703 | gnorm 0.549 | clip 0.000 | oom 0.000 | wall 2287 | train_wall 1084
+| epoch 065 | valid on 'valid' subset | loss 6.828 | nll_loss 3.298 | ppl 9.84 | num_updates 5915 | best_loss 6.72873
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint65.pt (epoch 65 @ 5915 updates) (writing took 5.951105117797852 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint65.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (7720 tokens) in 1.0s (635.61 sentences/s, 7643.17 tokens/s)
+| Generate test with beam=5: BLEU4 = 24.85, 59.4/34.6/23.3/17.4 (BP=0.823, ratio=0.837, syslen=7078, reflen=8458)
+[2022-04-07 10:17:44] INFO (nni/MainThread) Intermediate result: 24.85  (Index 64)
+test_score:  24.85
+| epoch 066 | loss 5.072 | nll_loss 1.287 | ppl 2.44 | wps 11956 | ups 3 | wpb 2360.121 | bsz 148.154 | num_updates 6006 | lr 0.000244827 | gnorm 0.562 | clip 0.000 | oom 0.000 | wall 2318 | train_wall 1101
+| epoch 066 | valid on 'valid' subset | loss 6.829 | nll_loss 3.213 | ppl 9.27 | num_updates 6006 | best_loss 6.72873
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint66.pt (epoch 66 @ 6006 updates) (writing took 6.060058116912842 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint66.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (8794 tokens) in 1.3s (487.11 sentences/s, 6672.37 tokens/s)
+| Generate test with beam=5: BLEU4 = 25.19, 53.6/30.3/19.9/14.5 (BP=0.963, ratio=0.964, syslen=8152, reflen=8458)
+[2022-04-07 10:18:16] INFO (nni/MainThread) Intermediate result: 25.19  (Index 65)
+test_score:  25.19
+| epoch 067 | loss 5.064 | nll_loss 1.276 | ppl 2.42 | wps 11901 | ups 3 | wpb 2360.121 | bsz 148.154 | num_updates 6097 | lr 0.000242993 | gnorm 0.573 | clip 0.000 | oom 0.000 | wall 2350 | train_wall 1118
+| epoch 067 | valid on 'valid' subset | loss 6.827 | nll_loss 3.246 | ppl 9.49 | num_updates 6097 | best_loss 6.72873
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint67.pt (epoch 67 @ 6097 updates) (writing took 6.329759359359741 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint67.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (8338 tokens) in 1.1s (573.63 sentences/s, 7450.05 tokens/s)
+| Generate test with beam=5: BLEU4 = 25.23, 55.4/31.8/21.3/16.0 (BP=0.906, ratio=0.910, syslen=7696, reflen=8458)
+[2022-04-07 10:18:50] INFO (nni/MainThread) Intermediate result: 25.23  (Index 66)
+test_score:  25.23
+| epoch 068 | loss 5.047 | nll_loss 1.251 | ppl 2.38 | wps 12110 | ups 3 | wpb 2360.121 | bsz 148.154 | num_updates 6188 | lr 0.000241199 | gnorm 0.557 | clip 0.000 | oom 0.000 | wall 2384 | train_wall 1134
+| epoch 068 | valid on 'valid' subset | loss 6.841 | nll_loss 3.287 | ppl 9.76 | num_updates 6188 | best_loss 6.72873
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint68.pt (epoch 68 @ 6188 updates) (writing took 6.2587525844573975 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint68.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (7866 tokens) in 1.1s (598.21 sentences/s, 7329.43 tokens/s)
+| Generate test with beam=5: BLEU4 = 24.78, 58.0/33.5/22.6/17.0 (BP=0.843, ratio=0.854, syslen=7224, reflen=8458)
+[2022-04-07 10:19:23] INFO (nni/MainThread) Intermediate result: 24.78  (Index 67)
+test_score:  24.78
+| epoch 069 | loss 5.037 | nll_loss 1.239 | ppl 2.36 | wps 11865 | ups 3 | wpb 2360.121 | bsz 148.154 | num_updates 6279 | lr 0.000239445 | gnorm 0.554 | clip 0.000 | oom 0.000 | wall 2417 | train_wall 1151
+| epoch 069 | valid on 'valid' subset | loss 6.862 | nll_loss 3.324 | ppl 10.01 | num_updates 6279 | best_loss 6.72873
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint69.pt (epoch 69 @ 6279 updates) (writing took 6.014810800552368 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint69.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (8193 tokens) in 1.3s (495.93 sentences/s, 6328.86 tokens/s)
+| Generate test with beam=5: BLEU4 = 24.77, 56.4/32.3/21.3/15.7 (BP=0.887, ratio=0.893, syslen=7551, reflen=8458)
+[2022-04-07 10:19:55] INFO (nni/MainThread) Intermediate result: 24.77  (Index 68)
+test_score:  24.77
+| epoch 070 | loss 5.027 | nll_loss 1.222 | ppl 2.33 | wps 10950 | ups 3 | wpb 2360.121 | bsz 148.154 | num_updates 6370 | lr 0.000237729 | gnorm 0.561 | clip 0.000 | oom 0.000 | wall 2451 | train_wall 1169
+| epoch 070 | valid on 'valid' subset | loss 6.820 | nll_loss 3.276 | ppl 9.69 | num_updates 6370 | best_loss 6.72873
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint70.pt (epoch 70 @ 6370 updates) (writing took 6.342671632766724 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint70.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (8186 tokens) in 1.2s (525.81 sentences/s, 6704.48 tokens/s)
+| Generate test with beam=5: BLEU4 = 25.35, 56.9/32.5/21.9/16.5 (BP=0.886, ratio=0.892, syslen=7544, reflen=8458)
+[2022-04-07 10:20:29] INFO (nni/MainThread) Intermediate result: 25.35  (Index 69)
+test_score:  25.35
+| epoch 071 | loss 5.012 | nll_loss 1.202 | ppl 2.30 | wps 12121 | ups 3 | wpb 2360.121 | bsz 148.154 | num_updates 6461 | lr 0.000236049 | gnorm 0.553 | clip 0.000 | oom 0.000 | wall 2483 | train_wall 1185
+| epoch 071 | valid on 'valid' subset | loss 6.860 | nll_loss 3.291 | ppl 9.79 | num_updates 6461 | best_loss 6.72873
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint71.pt (epoch 71 @ 6461 updates) (writing took 6.427156448364258 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint71.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (8150 tokens) in 1.1s (586.12 sentences/s, 7440.58 tokens/s)
+| Generate test with beam=5: BLEU4 = 24.68, 55.8/31.8/21.5/16.1 (BP=0.881, ratio=0.888, syslen=7508, reflen=8458)
+[2022-04-07 10:21:01] INFO (nni/MainThread) Intermediate result: 24.68  (Index 70)
+test_score:  24.68
+| epoch 072 | loss 4.999 | nll_loss 1.183 | ppl 2.27 | wps 11965 | ups 3 | wpb 2360.121 | bsz 148.154 | num_updates 6552 | lr 0.000234404 | gnorm 0.537 | clip 0.000 | oom 0.000 | wall 2515 | train_wall 1202
+| epoch 072 | valid on 'valid' subset | loss 6.861 | nll_loss 3.319 | ppl 9.98 | num_updates 6552 | best_loss 6.72873
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint72.pt (epoch 72 @ 6552 updates) (writing took 5.995622396469116 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint72.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (8319 tokens) in 1.1s (571.79 sentences/s, 7409.17 tokens/s)
+| Generate test with beam=5: BLEU4 = 24.25, 55.2/30.8/20.4/15.0 (BP=0.903, ratio=0.908, syslen=7677, reflen=8458)
+[2022-04-07 10:21:32] INFO (nni/MainThread) Intermediate result: 24.25  (Index 71)
+test_score:  24.25
+| epoch 073 | loss 4.987 | nll_loss 1.166 | ppl 2.24 | wps 12039 | ups 3 | wpb 2360.121 | bsz 148.154 | num_updates 6643 | lr 0.000232793 | gnorm 0.534 | clip 0.000 | oom 0.000 | wall 2546 | train_wall 1218
+| epoch 073 | valid on 'valid' subset | loss 6.860 | nll_loss 3.321 | ppl 9.99 | num_updates 6643 | best_loss 6.72873
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint73.pt (epoch 73 @ 6643 updates) (writing took 6.737342596054077 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint73.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (8106 tokens) in 1.2s (555.67 sentences/s, 7016.02 tokens/s)
+| Generate test with beam=5: BLEU4 = 25.86, 57.7/33.6/22.8/17.2 (BP=0.875, ratio=0.882, syslen=7464, reflen=8458)
+[2022-04-07 10:22:04] INFO (nni/MainThread) Intermediate result: 25.86  (Index 72)
+test_score:  25.86
+| epoch 074 | loss 4.974 | nll_loss 1.147 | ppl 2.21 | wps 11511 | ups 2 | wpb 2360.121 | bsz 148.154 | num_updates 6734 | lr 0.000231214 | gnorm 0.526 | clip 0.000 | oom 0.000 | wall 2583 | train_wall 1235
+| epoch 074 | valid on 'valid' subset | loss 6.872 | nll_loss 3.341 | ppl 10.13 | num_updates 6734 | best_loss 6.72873
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint74.pt (epoch 74 @ 6734 updates) (writing took 5.970216989517212 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint74.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (7941 tokens) in 1.1s (607.60 sentences/s, 7515.55 tokens/s)
+| Generate test with beam=5: BLEU4 = 24.51, 57.6/32.9/21.9/16.4 (BP=0.853, ratio=0.863, syslen=7299, reflen=8458)
+[2022-04-07 10:22:40] INFO (nni/MainThread) Intermediate result: 24.51  (Index 73)
+test_score:  24.51
+| epoch 075 | loss 4.970 | nll_loss 1.143 | ppl 2.21 | wps 12002 | ups 3 | wpb 2360.121 | bsz 148.154 | num_updates 6825 | lr 0.000229668 | gnorm 0.537 | clip 0.000 | oom 0.000 | wall 2614 | train_wall 1252
+| epoch 075 | valid on 'valid' subset | loss 6.874 | nll_loss 3.318 | ppl 9.97 | num_updates 6825 | best_loss 6.72873
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint75.pt (epoch 75 @ 6825 updates) (writing took 5.953693628311157 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint75.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (8345 tokens) in 1.1s (576.74 sentences/s, 7496.74 tokens/s)
+| Generate test with beam=5: BLEU4 = 24.78, 55.3/31.3/20.8/15.5 (BP=0.907, ratio=0.911, syslen=7703, reflen=8458)
+[2022-04-07 10:23:11] INFO (nni/MainThread) Intermediate result: 24.78  (Index 74)
+test_score:  24.78
+| epoch 076 | loss 4.955 | nll_loss 1.122 | ppl 2.18 | wps 12017 | ups 3 | wpb 2360.121 | bsz 148.154 | num_updates 6916 | lr 0.000228152 | gnorm 0.520 | clip 0.000 | oom 0.000 | wall 2645 | train_wall 1268
+| epoch 076 | valid on 'valid' subset | loss 6.885 | nll_loss 3.377 | ppl 10.39 | num_updates 6916 | best_loss 6.72873
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint76.pt (epoch 76 @ 6916 updates) (writing took 6.200943231582642 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint76.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (8058 tokens) in 1.2s (525.43 sentences/s, 6594.84 tokens/s)
+| Generate test with beam=5: BLEU4 = 24.36, 56.6/32.2/21.5/15.8 (BP=0.869, ratio=0.877, syslen=7416, reflen=8458)
+[2022-04-07 10:23:43] INFO (nni/MainThread) Intermediate result: 24.36  (Index 75)
+test_score:  24.36
+| epoch 077 | loss 4.951 | nll_loss 1.114 | ppl 2.16 | wps 11936 | ups 3 | wpb 2360.121 | bsz 148.154 | num_updates 7007 | lr 0.000226665 | gnorm 0.543 | clip 0.000 | oom 0.000 | wall 2677 | train_wall 1285
+| epoch 077 | valid on 'valid' subset | loss 6.848 | nll_loss 3.353 | ppl 10.22 | num_updates 7007 | best_loss 6.72873
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint77.pt (epoch 77 @ 7007 updates) (writing took 5.848646879196167 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint77.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (8377 tokens) in 1.1s (575.71 sentences/s, 7512.09 tokens/s)
+| Generate test with beam=5: BLEU4 = 25.23, 55.6/31.7/21.1/15.8 (BP=0.911, ratio=0.915, syslen=7735, reflen=8458)
+[2022-04-07 10:24:14] INFO (nni/MainThread) Intermediate result: 25.23  (Index 76)
+test_score:  25.23
+| epoch 078 | loss 4.937 | nll_loss 1.096 | ppl 2.14 | wps 11851 | ups 3 | wpb 2360.121 | bsz 148.154 | num_updates 7098 | lr 0.000225208 | gnorm 0.529 | clip 0.000 | oom 0.000 | wall 2708 | train_wall 1302
+| epoch 078 | valid on 'valid' subset | loss 6.884 | nll_loss 3.359 | ppl 10.26 | num_updates 7098 | best_loss 6.72873
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint78.pt (epoch 78 @ 7098 updates) (writing took 6.112450122833252 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint78.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (8256 tokens) in 1.1s (584.81 sentences/s, 7520.55 tokens/s)
+| Generate test with beam=5: BLEU4 = 24.81, 55.9/31.9/21.2/15.6 (BP=0.895, ratio=0.900, syslen=7614, reflen=8458)
+[2022-04-07 10:24:46] INFO (nni/MainThread) Intermediate result: 24.81  (Index 77)
+test_score:  24.81
+| epoch 079 | loss 4.923 | nll_loss 1.075 | ppl 2.11 | wps 11963 | ups 3 | wpb 2360.121 | bsz 148.154 | num_updates 7189 | lr 0.000223778 | gnorm 0.505 | clip 0.000 | oom 0.000 | wall 2740 | train_wall 1318
+| epoch 079 | valid on 'valid' subset | loss 6.884 | nll_loss 3.383 | ppl 10.43 | num_updates 7189 | best_loss 6.72873
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint79.pt (epoch 79 @ 7189 updates) (writing took 6.106829881668091 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint79.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (8617 tokens) in 1.2s (557.47 sentences/s, 7482.48 tokens/s)
+| Generate test with beam=5: BLEU4 = 25.45, 54.7/31.2/20.7/15.1 (BP=0.941, ratio=0.943, syslen=7975, reflen=8458)
+[2022-04-07 10:25:17] INFO (nni/MainThread) Intermediate result: 25.45  (Index 78)
+test_score:  25.45
+| epoch 080 | loss 4.919 | nll_loss 1.070 | ppl 2.10 | wps 12028 | ups 3 | wpb 2360.121 | bsz 148.154 | num_updates 7280 | lr 0.000222375 | gnorm 0.513 | clip 0.000 | oom 0.000 | wall 2771 | train_wall 1335
+| epoch 080 | valid on 'valid' subset | loss 6.900 | nll_loss 3.410 | ppl 10.63 | num_updates 7280 | best_loss 6.72873
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint80.pt (epoch 80 @ 7280 updates) (writing took 6.068757772445679 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint80.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (8078 tokens) in 1.2s (539.55 sentences/s, 6788.94 tokens/s)
+| Generate test with beam=5: BLEU4 = 24.49, 56.7/32.3/21.5/15.9 (BP=0.872, ratio=0.879, syslen=7436, reflen=8458)
+[2022-04-07 10:25:49] INFO (nni/MainThread) Intermediate result: 24.49  (Index 79)
+test_score:  24.49
+| epoch 081 | loss 4.914 | nll_loss 1.062 | ppl 2.09 | wps 12747 | ups 3 | wpb 2360.121 | bsz 148.154 | num_updates 7371 | lr 0.000220998 | gnorm 0.528 | clip 0.000 | oom 0.000 | wall 2802 | train_wall 1351
+| epoch 081 | valid on 'valid' subset | loss 6.908 | nll_loss 3.413 | ppl 10.65 | num_updates 7371 | best_loss 6.72873
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint81.pt (epoch 81 @ 7371 updates) (writing took 6.140057563781738 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint81.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (8281 tokens) in 1.1s (581.91 sentences/s, 7505.92 tokens/s)
+| Generate test with beam=5: BLEU4 = 25.37, 56.4/32.1/21.7/16.2 (BP=0.898, ratio=0.903, syslen=7639, reflen=8458)
+[2022-04-07 10:26:19] INFO (nni/MainThread) Intermediate result: 25.37  (Index 80)
+test_score:  25.37
+| epoch 082 | loss 4.905 | nll_loss 1.049 | ppl 2.07 | wps 12023 | ups 3 | wpb 2360.121 | bsz 148.154 | num_updates 7462 | lr 0.000219646 | gnorm 0.526 | clip 0.000 | oom 0.000 | wall 2833 | train_wall 1367
+| epoch 082 | valid on 'valid' subset | loss 6.915 | nll_loss 3.434 | ppl 10.81 | num_updates 7462 | best_loss 6.72873
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint82.pt (epoch 82 @ 7462 updates) (writing took 6.008067846298218 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint82.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (8289 tokens) in 1.2s (553.37 sentences/s, 7144.72 tokens/s)
+| Generate test with beam=5: BLEU4 = 24.66, 55.7/31.7/20.9/15.3 (BP=0.899, ratio=0.904, syslen=7647, reflen=8458)
+[2022-04-07 10:26:50] INFO (nni/MainThread) Intermediate result: 24.66  (Index 81)
+test_score:  24.66
+| epoch 083 | loss 4.901 | nll_loss 1.046 | ppl 2.06 | wps 12114 | ups 3 | wpb 2360.121 | bsz 148.154 | num_updates 7553 | lr 0.000218319 | gnorm 0.526 | clip 0.000 | oom 0.000 | wall 2864 | train_wall 1383
+| epoch 083 | valid on 'valid' subset | loss 6.908 | nll_loss 3.417 | ppl 10.68 | num_updates 7553 | best_loss 6.72873
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint83.pt (epoch 83 @ 7553 updates) (writing took 6.20064377784729 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint83.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (8339 tokens) in 1.2s (544.62 sentences/s, 7074.11 tokens/s)
+| Generate test with beam=5: BLEU4 = 24.66, 55.5/31.7/20.6/15.1 (BP=0.906, ratio=0.910, syslen=7697, reflen=8458)
+[2022-04-07 10:27:22] INFO (nni/MainThread) Intermediate result: 24.66  (Index 82)
+test_score:  24.66
+| epoch 084 | loss 4.885 | nll_loss 1.022 | ppl 2.03 | wps 12016 | ups 3 | wpb 2360.121 | bsz 148.154 | num_updates 7644 | lr 0.000217016 | gnorm 0.500 | clip 0.000 | oom 0.000 | wall 2896 | train_wall 1400
+| epoch 084 | valid on 'valid' subset | loss 6.913 | nll_loss 3.469 | ppl 11.08 | num_updates 7644 | best_loss 6.72873
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint84.pt (epoch 84 @ 7644 updates) (writing took 6.066741704940796 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint84.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (8080 tokens) in 1.1s (610.02 sentences/s, 7677.46 tokens/s)
+| Generate test with beam=5: BLEU4 = 24.18, 56.5/32.0/21.1/15.5 (BP=0.872, ratio=0.879, syslen=7438, reflen=8458)
+[2022-04-07 10:27:54] INFO (nni/MainThread) Intermediate result: 24.18  (Index 83)
+test_score:  24.18
+| epoch 085 | loss 4.877 | nll_loss 1.014 | ppl 2.02 | wps 11839 | ups 3 | wpb 2360.121 | bsz 148.154 | num_updates 7735 | lr 0.000215735 | gnorm 0.505 | clip 0.000 | oom 0.000 | wall 2928 | train_wall 1417
+| epoch 085 | valid on 'valid' subset | loss 6.943 | nll_loss 3.454 | ppl 10.96 | num_updates 7735 | best_loss 6.72873
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint85.pt (epoch 85 @ 7735 updates) (writing took 6.230609178543091 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint85.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (8208 tokens) in 1.1s (604.13 sentences/s, 7723.80 tokens/s)
+| Generate test with beam=5: BLEU4 = 24.75, 56.3/31.8/21.3/15.8 (BP=0.889, ratio=0.895, syslen=7566, reflen=8458)
+[2022-04-07 10:28:25] INFO (nni/MainThread) Intermediate result: 24.75  (Index 84)
+test_score:  24.75
+| epoch 086 | loss 4.871 | nll_loss 1.001 | ppl 2.00 | wps 11867 | ups 3 | wpb 2360.121 | bsz 148.154 | num_updates 7826 | lr 0.000214477 | gnorm 0.496 | clip 0.000 | oom 0.000 | wall 2960 | train_wall 1434
+| epoch 086 | valid on 'valid' subset | loss 6.917 | nll_loss 3.465 | ppl 11.04 | num_updates 7826 | best_loss 6.72873
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint86.pt (epoch 86 @ 7826 updates) (writing took 6.412632465362549 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint86.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (8297 tokens) in 1.1s (589.94 sentences/s, 7624.22 tokens/s)
+| Generate test with beam=5: BLEU4 = 24.61, 55.4/31.2/20.8/15.5 (BP=0.900, ratio=0.905, syslen=7655, reflen=8458)
+[2022-04-07 10:28:57] INFO (nni/MainThread) Intermediate result: 24.61  (Index 85)
+test_score:  24.61
+| epoch 087 | loss 4.862 | nll_loss 0.992 | ppl 1.99 | wps 12001 | ups 3 | wpb 2360.121 | bsz 148.154 | num_updates 7917 | lr 0.000213241 | gnorm 0.490 | clip 0.000 | oom 0.000 | wall 2992 | train_wall 1450
+| epoch 087 | valid on 'valid' subset | loss 6.951 | nll_loss 3.517 | ppl 11.45 | num_updates 7917 | best_loss 6.72873
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint87.pt (epoch 87 @ 7917 updates) (writing took 6.219043970108032 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint87.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (8160 tokens) in 1.2s (555.44 sentences/s, 7059.77 tokens/s)
+| Generate test with beam=5: BLEU4 = 24.52, 56.1/31.9/21.2/15.7 (BP=0.882, ratio=0.889, syslen=7518, reflen=8458)
+[2022-04-07 10:29:29] INFO (nni/MainThread) Intermediate result: 24.52  (Index 86)
+test_score:  24.52
+| epoch 088 | loss 4.857 | nll_loss 0.982 | ppl 1.98 | wps 11944 | ups 3 | wpb 2360.121 | bsz 148.154 | num_updates 8008 | lr 0.000212026 | gnorm 0.496 | clip 0.000 | oom 0.000 | wall 3023 | train_wall 1467
+| epoch 088 | valid on 'valid' subset | loss 6.953 | nll_loss 3.497 | ppl 11.29 | num_updates 8008 | best_loss 6.72873
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint88.pt (epoch 88 @ 8008 updates) (writing took 6.580615282058716 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint88.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (8267 tokens) in 1.1s (562.05 sentences/s, 7237.45 tokens/s)
+| Generate test with beam=5: BLEU4 = 24.72, 55.9/31.7/21.0/15.5 (BP=0.897, ratio=0.902, syslen=7625, reflen=8458)
+[2022-04-07 10:30:01] INFO (nni/MainThread) Intermediate result: 24.72  (Index 87)
+test_score:  24.72
+| epoch 089 | loss 4.846 | nll_loss 0.969 | ppl 1.96 | wps 11840 | ups 3 | wpb 2360.121 | bsz 148.154 | num_updates 8099 | lr 0.000210832 | gnorm 0.491 | clip 0.000 | oom 0.000 | wall 3056 | train_wall 1484
+| epoch 089 | valid on 'valid' subset | loss 6.946 | nll_loss 3.513 | ppl 11.42 | num_updates 8099 | best_loss 6.72873
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint89.pt (epoch 89 @ 8099 updates) (writing took 6.008822441101074 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint89.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (8169 tokens) in 1.1s (565.73 sentences/s, 7198.47 tokens/s)
+| Generate test with beam=5: BLEU4 = 23.92, 56.0/31.2/20.5/14.9 (BP=0.884, ratio=0.890, syslen=7527, reflen=8458)
+[2022-04-07 10:30:33] INFO (nni/MainThread) Intermediate result: 23.92  (Index 88)
+test_score:  23.92
+| epoch 090 | loss 4.841 | nll_loss 0.963 | ppl 1.95 | wps 10839 | ups 3 | wpb 2360.121 | bsz 148.154 | num_updates 8190 | lr 0.000209657 | gnorm 0.484 | clip 0.000 | oom 0.000 | wall 3089 | train_wall 1501
+| epoch 090 | valid on 'valid' subset | loss 6.941 | nll_loss 3.506 | ppl 11.36 | num_updates 8190 | best_loss 6.72873
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint90.pt (epoch 90 @ 8190 updates) (writing took 6.136266708374023 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint90.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (8264 tokens) in 1.2s (554.64 sentences/s, 7139.51 tokens/s)
+| Generate test with beam=5: BLEU4 = 24.33, 55.7/31.1/20.6/15.2 (BP=0.896, ratio=0.901, syslen=7622, reflen=8458)
+[2022-04-07 10:31:07] INFO (nni/MainThread) Intermediate result: 24.33  (Index 89)
+test_score:  24.33
+| epoch 091 | loss 4.837 | nll_loss 0.957 | ppl 1.94 | wps 12163 | ups 3 | wpb 2360.121 | bsz 148.154 | num_updates 8281 | lr 0.000208502 | gnorm 0.490 | clip 0.000 | oom 0.000 | wall 3121 | train_wall 1518
+| epoch 091 | valid on 'valid' subset | loss 6.970 | nll_loss 3.510 | ppl 11.39 | num_updates 8281 | best_loss 6.72873
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint91.pt (epoch 91 @ 8281 updates) (writing took 6.0276780128479 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint91.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (8837 tokens) in 1.3s (485.93 sentences/s, 6688.68 tokens/s)
+| Generate test with beam=5: BLEU4 = 24.77, 53.4/29.5/19.4/14.0 (BP=0.968, ratio=0.969, syslen=8195, reflen=8458)
+[2022-04-07 10:31:38] INFO (nni/MainThread) Intermediate result: 24.77  (Index 90)
+test_score:  24.77
+| epoch 092 | loss 4.828 | nll_loss 0.943 | ppl 1.92 | wps 12144 | ups 3 | wpb 2360.121 | bsz 148.154 | num_updates 8372 | lr 0.000207366 | gnorm 0.478 | clip 0.000 | oom 0.000 | wall 3152 | train_wall 1534
+| epoch 092 | valid on 'valid' subset | loss 6.936 | nll_loss 3.529 | ppl 11.55 | num_updates 8372 | best_loss 6.72873
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint92.pt (epoch 92 @ 8372 updates) (writing took 6.074239730834961 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint92.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (8305 tokens) in 1.1s (562.35 sentences/s, 7274.66 tokens/s)
+| Generate test with beam=5: BLEU4 = 23.62, 54.9/30.4/19.8/14.3 (BP=0.901, ratio=0.906, syslen=7663, reflen=8458)
+[2022-04-07 10:32:10] INFO (nni/MainThread) Intermediate result: 23.62  (Index 91)
+test_score:  23.62
+| epoch 093 | loss 4.823 | nll_loss 0.937 | ppl 1.91 | wps 11196 | ups 3 | wpb 2360.121 | bsz 148.154 | num_updates 8463 | lr 0.000206248 | gnorm 0.478 | clip 0.000 | oom 0.000 | wall 3185 | train_wall 1551
+| epoch 093 | valid on 'valid' subset | loss 6.952 | nll_loss 3.574 | ppl 11.91 | num_updates 8463 | best_loss 6.72873
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint93.pt (epoch 93 @ 8463 updates) (writing took 6.1225926876068115 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint93.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (8233 tokens) in 1.1s (598.03 sentences/s, 7669.17 tokens/s)
+| Generate test with beam=5: BLEU4 = 24.43, 55.5/31.3/20.9/15.5 (BP=0.892, ratio=0.897, syslen=7591, reflen=8458)
+[2022-04-07 10:32:42] INFO (nni/MainThread) Intermediate result: 24.43  (Index 92)
+test_score:  24.43
+| epoch 094 | loss 4.819 | nll_loss 0.934 | ppl 1.91 | wps 12159 | ups 3 | wpb 2360.121 | bsz 148.154 | num_updates 8554 | lr 0.000205148 | gnorm 0.477 | clip 0.000 | oom 0.000 | wall 3216 | train_wall 1568
+| epoch 094 | valid on 'valid' subset | loss 6.955 | nll_loss 3.529 | ppl 11.54 | num_updates 8554 | best_loss 6.72873
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint94.pt (epoch 94 @ 8554 updates) (writing took 6.07822585105896 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint94.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (7983 tokens) in 1.1s (592.70 sentences/s, 7369.96 tokens/s)
+| Generate test with beam=5: BLEU4 = 23.84, 56.4/31.7/21.1/15.7 (BP=0.859, ratio=0.868, syslen=7341, reflen=8458)
+[2022-04-07 10:33:14] INFO (nni/MainThread) Intermediate result: 23.84  (Index 93)
+test_score:  23.84
+| epoch 095 | loss 4.813 | nll_loss 0.924 | ppl 1.90 | wps 12265 | ups 3 | wpb 2360.121 | bsz 148.154 | num_updates 8645 | lr 0.000204065 | gnorm 0.475 | clip 0.000 | oom 0.000 | wall 3247 | train_wall 1584
+| epoch 095 | valid on 'valid' subset | loss 6.982 | nll_loss 3.571 | ppl 11.88 | num_updates 8645 | best_loss 6.72873
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint95.pt (epoch 95 @ 8645 updates) (writing took 6.058226585388184 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint95.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (8268 tokens) in 1.1s (609.29 sentences/s, 7846.72 tokens/s)
+| Generate test with beam=5: BLEU4 = 24.21, 55.3/31.0/20.5/15.2 (BP=0.897, ratio=0.902, syslen=7626, reflen=8458)
+[2022-04-07 10:33:45] INFO (nni/MainThread) Intermediate result: 24.21  (Index 94)
+test_score:  24.21
+| epoch 096 | loss 4.813 | nll_loss 0.924 | ppl 1.90 | wps 12535 | ups 3 | wpb 2360.121 | bsz 148.154 | num_updates 8736 | lr 0.000202999 | gnorm 0.487 | clip 0.000 | oom 0.000 | wall 3278 | train_wall 1600
+| epoch 096 | valid on 'valid' subset | loss 6.939 | nll_loss 3.530 | ppl 11.55 | num_updates 8736 | best_loss 6.72873
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint96.pt (epoch 96 @ 8736 updates) (writing took 5.5493268966674805 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint96.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (8442 tokens) in 1.1s (578.28 sentences/s, 7604.10 tokens/s)
+| Generate test with beam=5: BLEU4 = 24.30, 54.4/30.1/20.0/14.9 (BP=0.919, ratio=0.922, syslen=7800, reflen=8458)
+[2022-04-07 10:34:15] INFO (nni/MainThread) Intermediate result: 24.3  (Index 95)
+test_score:  24.3
+| epoch 097 | loss 4.800 | nll_loss 0.907 | ppl 1.88 | wps 11964 | ups 3 | wpb 2360.121 | bsz 148.154 | num_updates 8827 | lr 0.00020195 | gnorm 0.466 | clip 0.000 | oom 0.000 | wall 3309 | train_wall 1616
+| epoch 097 | valid on 'valid' subset | loss 6.999 | nll_loss 3.590 | ppl 12.04 | num_updates 8827 | best_loss 6.72873
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint97.pt (epoch 97 @ 8827 updates) (writing took 6.117199659347534 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint97.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (8350 tokens) in 1.1s (581.67 sentences/s, 7565.32 tokens/s)
+| Generate test with beam=5: BLEU4 = 24.15, 54.7/30.5/20.2/14.9 (BP=0.907, ratio=0.911, syslen=7708, reflen=8458)
+[2022-04-07 10:34:46] INFO (nni/MainThread) Intermediate result: 24.15  (Index 96)
+test_score:  24.15
+| epoch 098 | loss 4.796 | nll_loss 0.901 | ppl 1.87 | wps 11982 | ups 3 | wpb 2360.121 | bsz 148.154 | num_updates 8918 | lr 0.000200917 | gnorm 0.459 | clip 0.000 | oom 0.000 | wall 3340 | train_wall 1633
+| epoch 098 | valid on 'valid' subset | loss 6.976 | nll_loss 3.594 | ppl 12.08 | num_updates 8918 | best_loss 6.72873
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint98.pt (epoch 98 @ 8918 updates) (writing took 5.9168617725372314 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint98.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (8238 tokens) in 1.2s (517.93 sentences/s, 6646.02 tokens/s)
+| Generate test with beam=5: BLEU4 = 24.27, 55.3/31.0/20.7/15.4 (BP=0.893, ratio=0.898, syslen=7596, reflen=8458)
+[2022-04-07 10:35:17] INFO (nni/MainThread) Intermediate result: 24.27  (Index 97)
+test_score:  24.27
+| epoch 099 | loss 4.791 | nll_loss 0.894 | ppl 1.86 | wps 11889 | ups 3 | wpb 2360.121 | bsz 148.154 | num_updates 9009 | lr 0.0001999 | gnorm 0.462 | clip 0.000 | oom 0.000 | wall 3372 | train_wall 1650
+| epoch 099 | valid on 'valid' subset | loss 6.968 | nll_loss 3.614 | ppl 12.25 | num_updates 9009 | best_loss 6.72873
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint99.pt (epoch 99 @ 9009 updates) (writing took 6.054762125015259 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint99.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (8151 tokens) in 1.1s (596.84 sentences/s, 7577.61 tokens/s)
+| Generate test with beam=5: BLEU4 = 24.37, 55.7/31.5/21.2/15.8 (BP=0.881, ratio=0.888, syslen=7509, reflen=8458)
+[2022-04-07 10:35:49] INFO (nni/MainThread) Intermediate result: 24.37  (Index 98)
+test_score:  24.37
+| epoch 100 | loss 4.787 | nll_loss 0.890 | ppl 1.85 | wps 12010 | ups 3 | wpb 2360.121 | bsz 148.154 | num_updates 9100 | lr 0.000198898 | gnorm 0.474 | clip 0.000 | oom 0.000 | wall 3403 | train_wall 1666
+| epoch 100 | valid on 'valid' subset | loss 6.972 | nll_loss 3.601 | ppl 12.13 | num_updates 9100 | best_loss 6.72873
+| saved checkpoint checkpoints/tmp_gloss_de/checkpoint100.pt (epoch 100 @ 9100 updates) (writing took 5.937091588973999 seconds)
+| [gloss] dictionary: 3600 types
+| [de] dictionary: 3600 types
+| /haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/ test gloss-de 642 examples
+| loading model(s) from checkpoints/tmp_gloss_de/checkpoint100.pt
+bert_gates [True, True, True, True, True, True]
+| Translated 642 sentences (8059 tokens) in 1.1s (606.26 sentences/s, 7610.30 tokens/s)
+| Generate test with beam=5: BLEU4 = 23.65, 56.1/31.5/20.6/15.1 (BP=0.869, ratio=0.877, syslen=7417, reflen=8458)
+[2022-04-07 10:36:20] INFO (nni/MainThread) Intermediate result: 23.65  (Index 99)
+test_score:  23.65
+| done training in 3416.0 seconds

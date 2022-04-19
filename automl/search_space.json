@@ -1,0 +1,88 @@
+{
+    "arch": {
+        "_type":"choice",
+        "_value":["transformers2"]},
+    "optimizer":{
+        "_type":"choice",
+        "_value":["adam"]},
+    "lr":{
+        "_type":"choice",
+        "_value":[[0.00045]]},
+    "dropout":{
+        "_type":"choice",
+        "_value":[0.4]},
+    "encoder_layers":{
+        "_type":"choice",
+        "_value":[2]},
+    "decoder_layers":{
+        "_type":"choice",
+        "_value":[2]},
+    "en_bert_gates":{
+        "_type":"choice",
+        "_value":[[1,1,1,1,1,1]]},
+    "de_bert_gates":{
+        "_type":"choice",
+        "_value":[[1,1,1,1,1,1]]},
+    "max_tokens": {
+        "_type":"choice",
+        "_value":[4000]},
+    "min_lr":{
+        "_type":"choice",
+        "_value":[1e-09]},
+    "lr_scheduler":{
+        "_type":"choice",
+        "_value":["inverse_sqrt"]},
+    "weight_decay":{
+        "_type":"choice",
+        "_value":[0.0001]},
+    "criterion":{
+        "_type":"choice",
+        "_value":["label_smoothed_cross_entropy"]},
+    "label_smoothing":{
+        "_type":"choice",
+        "_value":[0.3]
+    },
+    "max_update": {
+        "_type":"choice",
+        "_value":[150000]},
+    "warmup_updates":{
+        "_type":"choice",
+        "_value":[4000]},
+    "warmup_init_lr":{
+        "_type":"choice",
+        "_value":[1e-07]},
+    "encoder_bert_dropout":{
+        "_type":"choice",
+        "_value":[false]},
+    "encoder_bert_dropout_ratio":{
+        "_type":"choice",
+        "_value":[0.2]},
+    "max_epoch":{
+        "_type":"choice",
+        "_value":[100]},
+    "share_all_embeddings": {
+        "_type":"choice",
+        "_value":[true]},
+    "bert_model_name":{
+        "_type":"choice",
+        "_value":["/haotianshuv/caoyong/pretrained_model/bert-base-german-dbmdz-uncased/"]},
+    "bert_ratio":{
+        "_type":"choice",
+        "_value":[0.0, 0.1, 0.2, 0.15]},
+    "alpha_bert_max":{
+        "_type":"choice",
+        "_value":[1.0]},
+    "alpha_bert":{
+        "_type":"choice",
+        "_value":[1.0]},
+    "alpha_mode":{
+        "_type":"choice",
+        "_value":["learn"]},
+    "alpha_bert_strategy":{
+        "_type":"choice",
+        "_value":["cosine"]},
+    "ablation_experiment": {
+        "_type":"choice",
+        "_value":["all"]
+    }
+}
