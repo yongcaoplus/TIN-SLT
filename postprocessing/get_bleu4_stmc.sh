@@ -4,9 +4,15 @@ ckpt_path=/haotianshuv/caoyong/temp/be-slt/checkpoint_save/stmc_0.9_spslV_0.2/ch
 goal_test_file=/haotianshuv/caoyong/temp/be-slt/dataset/raw/ph14_clean/test.de
 
 # please config log save dir
-store_file=/haotianshuv/caoyong/tin_rebuild/log/tian_stmc/result_test.out
-clean_text_file=/haotianshuv/caoyong/tin_rebuild/log/tian_stmc/result_test.txt
-score_text=/haotianshuv/caoyong/tin_rebuild/log/tian_stmc/score_test.txt
+if [ ! -d "/haotianshuv/caoyong/tin_rebuild/log" ]; then
+  mkdir /haotianshuv/caoyong/tin_rebuild/log
+fi
+if [ ! -d "/haotianshuv/caoyong/tin_rebuild/tin_stmc" ]; then
+  mkdir /haotianshuv/caoyong/tin_rebuild/log/tin_stmc
+fi
+store_file=/haotianshuv/caoyong/tin_rebuild/log/tin_stmc/result_test.out
+clean_text_file=/haotianshuv/caoyong/tin_rebuild/log/tin_stmc/result_test.txt
+score_text=/haotianshuv/caoyong/tin_rebuild/log/tin_stmc/score_test.txt
 # end condig
 
 

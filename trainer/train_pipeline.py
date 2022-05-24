@@ -26,10 +26,10 @@ params['encoder_layers'] = layers
 params['decoder_layers'] = layers
 
 
-if not os.path.exists('./../checkpoint/'):
-    os.mkdir('./../checkpoint/')
+if not os.path.exists('./../checkpoints/'):
+    os.mkdir('./../checkpoints/')
 # 将每次实验的模型保存到对应的文件夹
-SAVEDIR = './../checkpoint/ph14_stmc_new_{}_e{}_{}'.format(str(trial_no), layers, bedropout)
+SAVEDIR = './../checkpoints/ph14_stmc_new_{}_e{}_{}'.format(str(trial_no), layers, bedropout)
 store_model_path = SAVEDIR + "/checkpoint_best.pt"
 if not os.path.exists(SAVEDIR):
     os.mkdir(SAVEDIR)

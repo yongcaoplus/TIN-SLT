@@ -4,9 +4,15 @@ ckpt_path=/haotianshuv/caoyong/temp/be-slt/checkpoint_save/ph14_26.55/checkpoint
 goal_test_file=/haotianshuv/caoyong/temp/be-slt/dataset/raw/ph14_clean/test.de
 
 # please config log save dir
-store_file=/haotianshuv/caoyong/tin_rebuild/log/tian_ph14/result_test.out
-clean_text_file=/haotianshuv/caoyong/tin_rebuild/log/tian_ph14/result_test.txt
-score_text=/haotianshuv/caoyong/tin_rebuild/log/tian_ph14/score_test.txt
+if [ ! -d "/haotianshuv/caoyong/tin_rebuild/log" ]; then
+  mkdir /haotianshuv/caoyong/tin_rebuild/log
+fi
+if [ ! -d "/haotianshuv/caoyong/tin_rebuild/tin_ph14" ]; then
+  mkdir /haotianshuv/caoyong/tin_rebuild/log/tin_ph14
+fi
+store_file=/haotianshuv/caoyong/tin_rebuild/log/tin_ph14/result_test.out
+clean_text_file=/haotianshuv/caoyong/tin_rebuild/log/tin_ph14/result_test.txt
+score_text=/haotianshuv/caoyong/tin_rebuild/log/tin_ph14/score_test.txt
 # end condig
 
 BEAM_SIZE=5

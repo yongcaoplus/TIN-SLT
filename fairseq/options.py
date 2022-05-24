@@ -236,6 +236,8 @@ def get_parser(desc, default_task='translation'):
     parser.add_argument('--user-dir', default=None,
                         help='path to a python module containing custom extensions (tasks and/or architectures)')
 
+
+
     from fairseq.registry import REGISTRIES
     for registry_name, REGISTRY in REGISTRIES.items():
         parser.add_argument(
@@ -312,6 +314,21 @@ def add_dataset_args(parser, train=False, gen=False):
                        help='batch size will be a multiplier of this value')
     parser.add_argument('--dataset-impl', metavar="FORMAT", help='output dataset implementation',
                         choices=['raw', 'lazy', 'cached', 'mmap'], default='cached')
+
+    ###############  添加bert alpha参数   ##################
+    group.add_argument("--alpha_bert_strategy", default="increase", type=str,
+                       help='choose whether to use cosine alpha params')
+    group.add_argument('--alpha_bert_max', default=1.0, type=float,
+                       help='initial alpha for bert fused')
+    group.add_argument('--alpha_bert', default=1.0, type=float,
+                       help='initial alpha for bert fused')
+    group.add_argument("--alpha_mode", default='', type=str,
+                       help='choose whether to use cosine alpha params')
+    group.add_argument("--bert_ratio", default=1.0, type=float,
+                       help='choose whether to use cosine alpha params')
+    group.add_argument("--instruction_layer_num", default=0, type=int,
+                       help='choose whether to use cosine alpha params')
+
     if train:
         group.add_argument('--train-subset', default='train', metavar='SPLIT',
                            choices=['train', 'valid', 'test'],
@@ -396,19 +413,7 @@ def add_optimization_args(parser):
     group.add_argument('--min-lr', default=-1, type=float, metavar='LR',
                        help='stop training when the learning rate reaches this minimum')
 
-    ###############  添加bert alpha参数   ##################
-    group.add_argument("--alpha_bert_strategy", default="increase", type=str,
-                       help='choose whether to use cosine alpha params')
-    group.add_argument('--alpha_bert_max', default=1.0, type=float,
-                       help='initial alpha for bert fused')
-    group.add_argument('--alpha_bert', default=1.0, type=float,
-                       help='initial alpha for bert fused')
-    group.add_argument("--alpha_mode", default='', type=str,
-                       help='choose whether to use cosine alpha params')
-    group.add_argument("--bert_ratio", default=1.0, type=float,
-                       help='choose whether to use cosine alpha params')
-    group.add_argument("--instruction_layer_num", default=0, type=int,
-                       help='choose whether to use cosine alpha params')
+
 
     group.add_argument("--ablation_experiment", default="all", type=str,
                        help='ablation study: only_encoder, only_decoder, all, none')
@@ -568,7 +573,6 @@ def add_interactive_args(parser):
 def add_model_args(parser):
     group = parser.add_argument_group('Model configuration')
     # fmt: off
-
     # Model definitions can be found under fairseq/models/
     #
     # The model architecture can be specified in several ways.
