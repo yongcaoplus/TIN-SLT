@@ -16,6 +16,6 @@ tuner:
     #choice: maximize, minimize
     optimize_mode: maximize
 trial:
-  command: CUDA_VISIBLE_DEVICES=0 python3 ./../trainer/train_pipeline.py ./../dataset/processed/stmc_add_text_to_gloss_0.9/
+  command: CUDA_VISIBLE_DEVICES=0 python3 ./../trainer/train_pipeline.py /haotianshuv/caoyong/temp/be-slt/dataset/processed/stmc_add_text_to_gloss_0.9/
   codeDir: .
   gpuNum: 0

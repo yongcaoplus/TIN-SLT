@@ -3,7 +3,7 @@ src=gloss
 tgt=de
 ARCH=transformers2
 DATAPATH=/haotianshuv/caoyong/temp/be-slt/dataset/processed/ph14_add_text_to_gloss_0.9/
-SAVEDIR=checkpoints/tmp_${src}_${tgt}_tmp
+SAVEDIR=../checkpoints/tmp_${src}_${tgt}_tmp
 mkdir -p $SAVEDIR
 
 python train.py $DATAPATH \

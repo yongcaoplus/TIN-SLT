@@ -47,7 +47,10 @@ setup(
         'torch',
         'tqdm',
         'boto3',
-        'requests'
+        'requests',
+        'transformers==3.5.0',
+        'nni==2.3',
+        'nltk==3.6.2'
     ],
     packages=find_packages(exclude=['scripts', 'tests']),
     ext_modules=[bleu],

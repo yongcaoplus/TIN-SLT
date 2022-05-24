@@ -25,8 +25,11 @@ layers = min(en_layers, de_layers)
 params['encoder_layers'] = layers
 params['decoder_layers'] = layers
 
+
+if not os.path.exists('./../checkpoint/'):
+    os.mkdir('./../checkpoint/')
 # 将每次实验的模型保存到对应的文件夹
-SAVEDIR = '/haotianshuv/caoyong/temp/be-slt/checkpoint/ph14_stmc_new_{}_e{}_{}'.format(str(trial_no), layers, bedropout)
+SAVEDIR = './../checkpoint/ph14_stmc_new_{}_e{}_{}'.format(str(trial_no), layers, bedropout)
 store_model_path = SAVEDIR + "/checkpoint_best.pt"
 if not os.path.exists(SAVEDIR):
     os.mkdir(SAVEDIR)

@@ -20,23 +20,90 @@ If the trained model doesn't work or if there are any issues, please feel free t
 
 #### Step 1 install dependencies
 
-```shell
+```shell script
 pip install --editable .      
+```
+
+Note that, if the download speed is not fast, try this:
+
+```shell script
+pip install --editable . -i https://pypi.tuna.tsinghua.edu.cn/simple   
+```
+
+Our code is implemented over Python 3.6.8, and Pytorch 1.5.0+cu101. (We didn't test the code on other package version.)      
+```shell script
+pip install torch==1.5.0+cu101 -f https://download.pytorch.org/whl/torch_stable.html
+```
+
+#### Step 2 Prepare dataset
+If you use our prepared dataset, skip this step. 
+Else:
+```shell script
+cd preprocessing      
 python prepare_data.py
 ```
+Then you can get the following files in your destination dir:
+![](asset/prepare_data.png)
+
 
 #### Step 2 Train by AutoML
+Choose one training method (with / without automl).
+##### (1) Without AutoML
 
-```shell
-nnictl create --config automl/config.yml -p 11111
+```shell script
+cd trainer
+# please config train.sh first, and then:
+sh train.sh
 ```
+
+##### (2) With AutoML
+Config automl/config.yml and automl/search_space.json files, and run the following cmd to train in your terminal:
+```shell script
+nnictl create --config automl/config.yml -p 11111
+# -p means the port you wish to visualize the training process in browser.
+```
+If succeed, you should see the following logs in your terminal:
+![](asset/train_start.png)
+
+Go to your browser to see the training process.
+![](asset/nni_plat.png)
+
+![](asset/train_process.png)
+
+Please refer to [NNI Website](https://nni.readthedocs.io/) for more instructions on NNI.
+
 
 #### Step 3 Obtain Mertrix
 
-```shell
+```shell script
 cd postprocessing       
 sh get_bleu4.sh
 ```
 
 ## 4. Questions
 Please contact [yongcao_epic@hust.edu.cn]().
+
+
+
+## 5. Some problems you may encounter:
+
+1.'ascii' codec can't decode byte 0xef
+```shell script
+UnicodeDecodeError: 'ascii' codec can't decode byte 0xef in position 1622: ordinal not in range(128)
+```
+=> please run this command in your terminal
+
+```shell script
+export LC_ALL=C.UTF-8
+source ~/.bashrc
+```
+
+2.Resource punkt not found. / Resource wordnet not found.
+
+please run this command in your terminal
+```shell script
+python
+  >>> import nltk
+  >>> nltk.download('wordnet')
+  >>> nltk.download('punkt')
+```

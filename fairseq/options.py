@@ -539,18 +539,18 @@ def add_generation_args(parser):
                        help='if set, uses attention feedback to compute and print alignment to source tokens')
     group.add_argument('--change-ratio', action='store_true')
 
-    group.add_argument("--alpha_bert_strategy", default="increase", type=str,
-                       help='choose whether to use cosine alpha params')
-    group.add_argument('--alpha_bert_max', default=1.0, type=float,
-                       help='initial alpha for bert fused')
-    group.add_argument('--alpha_bert', default=1.0, type=float,
-                       help='initial alpha for bert fused')
-    group.add_argument("--alpha_mode", default='', type=str,
-                       help='choose whether to use cosine alpha params')
-    group.add_argument("--bert_ratio", default=1.0, type=float,
-                       help='choose whether to use cosine alpha params')
-    group.add_argument("--instruction_layer_num", default=0, type=int,
-                       help='choose whether to use cosine alpha params')
+    # group.add_argument("--alpha_bert_strategy", default="increase", type=str,
+    #                    help='choose whether to use cosine alpha params')
+    # group.add_argument('--alpha_bert_max', default=1.0, type=float,
+    #                    help='initial alpha for bert fused')
+    # group.add_argument('--alpha_bert', default=1.0, type=float,
+    #                    help='initial alpha for bert fused')
+    # group.add_argument("--alpha_mode", default='', type=str,
+    #                    help='choose whether to use cosine alpha params')
+    # group.add_argument("--bert_ratio", default=1.0, type=float,
+    #                    help='choose whether to use cosine alpha params')
+    # group.add_argument("--instruction_layer_num", default=0, type=int,
+    #                    help='choose whether to use cosine alpha params')
     # fmt: on
     return group
 

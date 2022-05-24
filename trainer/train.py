@@ -29,7 +29,6 @@ from shutil import copyfile
 def main(args, init_distributed=False):
     final_test_score = 0.0
     utils.import_user_module(args)
-
     assert args.max_tokens is not None or args.max_sentences is not None, \
         'Must specify batch size either with --max-tokens or --max-sentences'
 
@@ -318,7 +317,7 @@ def distributed_main(i, args, start_rank=0):
     main(args, init_distributed=True)
 
 
-def cli_main(search_space_params):
+def cli_main_sh():
     parser = options.get_training_parser()
     args = options.parse_args_and_arch(parser, {})
 
@@ -355,56 +354,54 @@ def cli_main(search_space_params):
         main(args)
 
 
-# def cli_main(search_space_params):
-#     global params
-#     params = search_space_params
-#     #########################  如果数据类型不对， 此处修改   ################################
-#     search_space_params['min_lr'] = float(search_space_params['min_lr'])
-#     search_space_params['warmup_init_lr'] = float(search_space_params['warmup_init_lr'])
-#
-#     search_space_params['en_bert_gates'] = search_space_params['en_bert_gates'][0:search_space_params['encoder_layers']]
-#     search_space_params['de_bert_gates'] = search_space_params['de_bert_gates'][0:search_space_params['decoder_layers']]
-#
-#     ####################################################################################
-#
-#     parser = options.get_training_parser()
-#     args = options.parse_args_and_arch(parser, search_space_params)
-#
-#     print(args)
-#
-#     if args.distributed_init_method is None:
-#         distributed_utils.infer_init_method(args)
-#
-#     if args.distributed_init_method is not None:
-#         # distributed training
-#         if torch.cuda.device_count() > 1 and not args.distributed_no_spawn:
-#             start_rank = args.distributed_rank
-#             args.distributed_rank = None  # assign automatically
-#             torch.multiprocessing.spawn(
-#                 fn=distributed_main,
-#                 args=(args, start_rank),
-#                 nprocs=torch.cuda.device_count(),
-#             )
-#         else:
-#             distributed_main(args.device_id, args)
-#     elif args.distributed_world_size > 1:
-#         # fallback for single node with multiple GPUs
-#         assert args.distributed_world_size <= torch.cuda.device_count()
-#         port = random.randint(10000, 20000)
-#         args.distributed_init_method = 'tcp://localhost:{port}'.format(port=port)
-#         args.distributed_rank = None  # set based on device id
-#         if max(args.update_freq) > 1 and args.ddp_backend != 'no_c10d':
-#             print('| NOTE: you may get better performance with: --ddp-backend=no_c10d')
-#         torch.multiprocessing.spawn(
-#             fn=distributed_main,
-#             args=(args,),
-#             nprocs=args.distributed_world_size,
-#         )
-#     else:
-#         # single GPU training
-#         main(args)
+def cli_main(search_space_params):
+    global params
+    params = search_space_params
+    #########################  如果数据类型不对， 此处修改   ################################
+    search_space_params['min_lr'] = float(search_space_params['min_lr'])
+    search_space_params['warmup_init_lr'] = float(search_space_params['warmup_init_lr'])
+
+    search_space_params['en_bert_gates'] = search_space_params['en_bert_gates'][0:search_space_params['encoder_layers']]
+    search_space_params['de_bert_gates'] = search_space_params['de_bert_gates'][0:search_space_params['decoder_layers']]
+    ####################################################################################
+
+    parser = options.get_training_parser()
+    args = options.parse_args_and_arch(parser, search_space_params)
+
+    print(args)
+
+    if args.distributed_init_method is None:
+        distributed_utils.infer_init_method(args)
+
+    if args.distributed_init_method is not None:
+        # distributed training
+        if torch.cuda.device_count() > 1 and not args.distributed_no_spawn:
+            start_rank = args.distributed_rank
+            args.distributed_rank = None  # assign automatically
+            torch.multiprocessing.spawn(
+                fn=distributed_main,
+                args=(args, start_rank),
+                nprocs=torch.cuda.device_count(),
+            )
+        else:
+            distributed_main(args.device_id, args)
+    elif args.distributed_world_size > 1:
+        # fallback for single node with multiple GPUs
+        assert args.distributed_world_size <= torch.cuda.device_count()
+        port = random.randint(10000, 20000)
+        args.distributed_init_method = 'tcp://localhost:{port}'.format(port=port)
+        args.distributed_rank = None  # set based on device id
+        if max(args.update_freq) > 1 and args.ddp_backend != 'no_c10d':
+            print('| NOTE: you may get better performance with: --ddp-backend=no_c10d')
+        torch.multiprocessing.spawn(
+            fn=distributed_main,
+            args=(args,),
+            nprocs=args.distributed_world_size,
+        )
+    else:
+        # single GPU training
+        main(args)
 
 
 if __name__ == '__main__':
-    cli_main({})
-    # cli_main()
+    cli_main_sh()
