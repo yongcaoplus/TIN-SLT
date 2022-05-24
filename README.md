@@ -46,7 +46,7 @@ Then you can get the following files in your destination dir:
 ![](asset/prepare_data.png)
 
 
-#### Step 2 Train by AutoML
+#### Step 3 Train by AutoML
 Choose one training method (with / without automl).
 ##### (1) Without AutoML
 
@@ -73,7 +73,7 @@ Go to your browser to see the training process.
 Please refer to [NNI Website](https://nni.readthedocs.io/) for more instructions on NNI.
 
 
-#### Step 3 Obtain Mertrix
+#### Step 4 Obtain Mertrix
 
 ```shell script
 cd postprocessing       
