@@ -12,10 +12,10 @@ by [Yong Cao](https://yongcaoplus.github.io/), Wei Li, [Xianzhi Li](https://nini
 
 
 ## 2. Dataset and Trained models
-* Dataset can be downloaded in [Google Drive](https://drive.google.com/file/d/1wghNY3Z5XOQmkyVHh8o8zGAuGvaDRIYJ/view?usp=sharing) and processed version is here：[Google Drive](https://drive.google.com/file/d/1lwtO8qnEuGaUaiBw6d0d3ZLufXDacxYC/view?usp=sharing).       
+* Dataset can be downloaded in [Google Drive](https://drive.google.com/drive/folders/1NNta7CgBF0Ny5IbzmBKP-C1B33aR6kWZ?usp=sharing).       
 * Our trained model can be downloaded in [Google Drive](https://drive.google.com/drive/folders/1s26goE0Rh4T9L_d-6XDfHKYP_FPGPveR?usp=sharing). 
 If the trained model doesn't work or if there are any issues, please feel free to contact us.
-
+* The pre-trained model can be downloaded in [bert-base-german-dbmdz-uncased](https://drive.google.com/file/d/105RuAqXLYj5mPeHbp3pzEKCWlSL7wR0o/view?usp=sharing).
 ## 3. Execute Steps
 
 #### Step 1 install dependencies
